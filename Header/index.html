@@ -3,404 +3,442 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ampy — Header Redesign (prototyp)</title>
+<title>Ampy — Header Redesign v2 (prototyp)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================================
-   AMPY HEADER REDESIGN — prototype
-   Tokens = real Ampy production (ampy-design-system). Behaviour synthesised from
-   HemSol (fixed clean bar · pulse CTA · dim-overlay) + EVFi (mega-menu IA).
-   NOTE: prototype loads Outfit from Google Fonts for rendering; production
-   self-hosts it (GDPR). All imagery = real ampy.se/wp-content assets.
+   AMPY HEADER REDESIGN v2 — HemSol 1:1 on structure/behaviour, Ampy on tokens.
+   v2 feedback applied: full-width square bar (no floating card, no gap, no
+   shrink), visible contrast line under the bar, solid-teal CTA with HemSol's
+   pulse DOT (not a pulsing button), HemSol editorial mega-menus with the FULL
+   live service list, HemSol mobile bar (logo · CTA · burger, always sticky).
+   Links = real ampy.se URLs; "#" = page pending.
+   NOTE: prototype loads Outfit via Google Fonts; production self-hosts (GDPR).
    ============================================================================ */
 :root{
-  --ap-navy:#090b32; --ap-navy-2:#0d1145; --ap-teal:#00a991; --ap-teal-bright:#1cc4af;
+  --ap-navy:#090b32; --ap-teal:#00a991; --ap-teal-hover:#008d79;
   --ap-green:#39c281; --ap-mint:#55ff9a; --ap-offwhite:#f5f9ff; --ap-white:#fff;
-  --ap-crystal:#b6f2ff; --ap-seafoam:#5eb1bf;
   --ink:#0f123c; --ink-muted:#565e82; --ink-faint:#8a90ac;
-  --line:rgba(15,18,60,.10); --line-strong:rgba(15,18,60,.16);
+  --line:rgba(15,18,60,.10); --line-soft:rgba(15,18,60,.06);
+  --hairline:#e2e9f3;                    /* the contrast line under the bar */
   --font:"Outfit",system-ui,-apple-system,sans-serif;
-  --r-sm:.8rem; --r-md:1.4rem; --r-lg:2.2rem; --r-pill:999rem;
-  --shadow-1:0 1px 2px rgba(15,18,60,.06),0 1px 1px rgba(15,18,60,.04);
-  --shadow-2:0 .6rem 1.6rem -.4rem rgba(15,18,60,.10),0 .2rem .6rem rgba(15,18,60,.06);
-  --shadow-3:0 2.4rem 5rem -1rem rgba(15,18,60,.18),0 .8rem 1.6rem -.6rem rgba(15,18,60,.10);
-  --ease:cubic-bezier(.2,.6,.2,1); --ease-out:cubic-bezier(.16,1,.3,1);
-  --header-h:7.6rem; --container:126rem;
+  --r-sm:.8rem; --r-md:1.4rem; --r-btn:1.5rem;   /* HemSol border-radius: 15px */
+  --t:.2s ease-out;                               /* HemSol --transition */
+  --header-h:7.2rem; --wrap:2.8rem; --container:128rem;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{font-size:62.5%;scroll-behavior:smooth}
+html{font-size:62.5%}
 body{font-family:var(--font);font-weight:300;color:var(--ink);background:var(--ap-offwhite);
-  -webkit-font-smoothing:antialiased;line-height:1.5;font-size:1.6rem}
+  -webkit-font-smoothing:antialiased;line-height:1.5;font-size:1.6rem;padding-top:var(--header-h)}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+body.drawer-open{overflow:hidden}
 
-/* ---- page dim overlay (HemSol move) ---- */
-.dim{position:fixed;inset:0;background:rgba(9,11,50,.28);opacity:0;pointer-events:none;
-  transition:opacity var(--normal,.28s) var(--ease);z-index:80;backdrop-filter:blur(1.5px)}
-body.menu-open .dim{opacity:1;pointer-events:auto}
+/* ---- page dim (HemSol: body:has(li:hover) main:after) ---- */
+.dim{position:fixed;inset:0;background:rgba(9,11,50,.22);opacity:0;pointer-events:none;
+  transition:opacity var(--t);z-index:60}
+body.menu-open .dim,body.drawer-open .dim{opacity:1}
+body.drawer-open .dim{pointer-events:auto}
 
 /* ============================================================================
-   HEADER SHELL
+   HEADER — full-width square bar, fixed, constant height (HemSol)
    ============================================================================ */
-.hdr{position:fixed;top:0;left:0;width:100%;z-index:100;
-  padding:1.2rem clamp(1.6rem,4vw,4rem);
-  transition:padding var(--normal,.28s) var(--ease),background var(--normal,.28s) var(--ease)}
-.hdr.scrolled{padding-top:.6rem;padding-bottom:.6rem}
-
-.hdr__bar{max-width:var(--container);margin:0 auto;height:var(--header-h);
-  display:flex;align-items:center;gap:2.4rem;
-  background:var(--ap-white);border-radius:var(--r-lg);
-  padding:0 1.2rem 0 2rem;box-shadow:var(--shadow-2);
-  transition:height var(--normal,.28s) var(--ease),box-shadow var(--normal,.28s) var(--ease),border-radius var(--normal,.28s) var(--ease)}
-.hdr.scrolled .hdr__bar{height:6.4rem;box-shadow:var(--shadow-3)}
+.hdr{position:fixed;top:0;left:0;width:100%;height:var(--header-h);z-index:100;
+  background:var(--ap-white);
+  border-bottom:2px solid var(--hairline);              /* the contrast line */
+  box-shadow:0 2px 10px rgba(9,11,50,.04)}
+.hdr__in{height:100%;display:flex;align-items:center;padding:0 var(--wrap)}
 
 .hdr__logo{flex:0 0 auto;display:flex;align-items:center}
-.hdr__logo img{height:3.4rem;width:auto}
+.hdr__logo img{width:130px;height:auto}                 /* HemSol: 130px */
 
-/* ---- primary nav ---- */
-.nav{flex:1 1 auto;display:flex;justify-content:center;align-items:center;gap:.4rem;height:100%}
-.nav__item{position:static;height:100%;display:flex;align-items:center}
-.nav__link{display:inline-flex;align-items:center;gap:.6rem;height:4.4rem;padding:0 1.8rem;
-  border-radius:var(--r-pill);font-size:1.7rem;font-weight:400;color:var(--ink);
-  transition:background var(--fast,.14s) var(--ease),color var(--fast,.14s) var(--ease)}
-.nav__link .chev{width:1.1rem;height:1.1rem;transition:transform var(--normal,.28s) var(--ease);opacity:.55}
-.nav__item:hover .nav__link,.nav__item.open .nav__link{background:rgba(0,169,145,.09);color:var(--ap-teal)}
-.nav__item:hover .nav__link .chev,.nav__item.open .nav__link .chev{transform:rotate(180deg);opacity:1}
+/* ---- primary nav: full-height links, HemSol hover (tint + 2px bottom border) */
+.nav{flex:1 1 auto;display:flex;justify-content:center;height:100%}
+.nav__item{height:100%}
+.nav__link{display:inline-flex;align-items:center;gap:.7rem;height:100%;padding:0 2rem;
+  font-size:1.7rem;font-weight:500;color:var(--ink);
+  border-bottom:2px solid transparent;margin-bottom:-2px;   /* sits on the hairline */
+  transition:background var(--t),border-color var(--t)}
+.nav__link .chev{width:1.2rem;height:1.2rem;opacity:.55;transition:transform var(--t),opacity var(--t)}
+.nav__item:hover .nav__link,.nav__item.open .nav__link{
+  background:rgba(0,169,145,.07);border-color:var(--ap-teal)}
+.nav__item:hover .chev,.nav__item.open .chev{transform:rotate(180deg);opacity:1}
 
-/* ---- right cluster ---- */
-.hdr__right{flex:0 0 auto;margin-left:auto;display:flex;align-items:center;gap:1rem}
+/* ---- CTA: solid teal + HemSol pulse DOT under the button edge ---- */
+.hdr__right{flex:0 0 auto;margin-left:auto;display:flex;align-items:center;gap:1.4rem}
+.cta{position:relative;display:inline-flex;align-items:center;height:4.6rem;padding:0 2.4rem;
+  border-radius:var(--r-btn);font-size:1.6rem;font-weight:600;
+  color:#fff;background:var(--ap-teal);transition:background var(--t)}
+.cta:hover{background:var(--ap-teal-hover)}
+.cta::after{content:"";width:1rem;height:1rem;border-radius:50%;background:var(--ap-mint);
+  position:absolute;bottom:-.5rem;left:calc(50% - .5rem);
+  animation:cta_dot 1.6s ease-in-out infinite}            /* HemSol header_cta_dot */
+@keyframes cta_dot{
+  0%{box-shadow:0 0 rgba(0,255,170,.35)}
+  50%{box-shadow:0 0 3px 6px rgba(0,255,170,.5)}
+  100%{box-shadow:0 0 6px 9px rgba(0,255,170,0)}}
 
-/* pulse CTA */
-.cta{position:relative;display:inline-flex;align-items:center;gap:.8rem;
-  height:4.8rem;padding:0 2.4rem;border-radius:var(--r-pill);font-size:1.6rem;font-weight:600;
-  color:var(--ap-navy);
-  background:linear-gradient(120deg,var(--ap-mint) 0%,var(--ap-crystal) 52%,var(--ap-seafoam) 100%);
-  box-shadow:0 .6rem 1.6rem -.4rem rgba(0,169,145,.5);
-  transition:transform var(--fast,.14s) var(--ease),box-shadow var(--normal,.28s) var(--ease);
-  animation:cta-breathe 3.6s var(--ease) infinite}
-.cta:hover{transform:translateY(-1px);box-shadow:0 1rem 2.4rem -.4rem rgba(0,169,145,.6);animation-play-state:paused}
-.cta__dot{width:.9rem;height:.9rem;border-radius:50%;background:var(--ap-navy);
-  animation:cta-dot 2.8s var(--ease) infinite}
-@keyframes cta-breathe{0%,100%{box-shadow:0 .6rem 1.6rem -.4rem rgba(0,169,145,.45)}
-  50%{box-shadow:0 .6rem 1.6rem -.4rem rgba(0,169,145,.45),0 0 0 .5rem rgba(85,255,154,.28)}}
-@keyframes cta-dot{0%{box-shadow:0 0 0 0 rgba(9,11,50,.5)}70%{box-shadow:0 0 0 .7rem rgba(9,11,50,0)}100%{box-shadow:0 0 0 0 rgba(9,11,50,0)}}
-
-/* hamburger (mobile) */
-.burger{display:none;width:4.8rem;height:4.8rem;border-radius:var(--r-md);
-  align-items:center;justify-content:center;flex-direction:column;gap:.5rem;background:rgba(9,11,50,.04)}
-.burger span{display:block;width:2.2rem;height:.25rem;border-radius:2px;background:var(--ap-navy);transition:.25s var(--ease)}
-
-/* ============================================================================
-   MEGA MENU (desktop) — full-width panel under the bar
-   ============================================================================ */
-.mega{position:absolute;left:0;top:calc(100% - .4rem);width:100%;
-  padding:0 clamp(1.6rem,4vw,4rem);opacity:0;pointer-events:none;transform:translateY(-.8rem);
-  transition:opacity var(--normal,.28s) var(--ease),transform var(--normal,.28s) var(--ease);z-index:90}
-.nav__item.open .mega{opacity:1;pointer-events:auto;transform:translateY(0)}
-.mega__panel{max-width:var(--container);margin:0 auto;background:var(--ap-white);
-  border-radius:var(--r-lg);box-shadow:var(--shadow-3);padding:3.2rem;
-  border:1px solid var(--line)}
-
-.mega__grid{display:grid;gap:2.4rem}
-.mega--services .mega__grid{grid-template-columns:repeat(3,1fr) 1.15fr}
-.mega--products .mega__grid{grid-template-columns:1.5fr 1.5fr 1fr}
-.mega--solutions .mega__grid{grid-template-columns:repeat(3,1fr)}
-
-.mcol{display:flex;flex-direction:column;gap:.4rem;padding-right:2rem}
-.mcol + .mcol{border-left:1px solid var(--line);padding-left:2.4rem}
-.mcol__head{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
-.mcol__head .ic{width:2.4rem;height:2.4rem;object-fit:contain}
-.mcol__head h4{font-size:1.9rem;font-weight:600;color:var(--ap-navy)}
-.mlink{display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.9rem 1.1rem;border-radius:var(--r-md);font-size:1.55rem;color:var(--ink-muted);font-weight:400;
-  transition:background var(--fast,.14s) var(--ease),color var(--fast,.14s) var(--ease)}
-.mlink:hover{background:rgba(0,169,145,.08);color:var(--ap-teal)}
-.mlink .arr{opacity:0;transform:translateX(-.4rem);transition:.16s var(--ease);font-size:1.4rem}
-.mlink:hover .arr{opacity:1;transform:translateX(0)}
-
-/* Edvin contact card */
-.mcard{background:var(--ap-offwhite);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:1.8rem;display:flex;flex-direction:column;gap:1.2rem;height:100%;justify-content:center}
-.mcard__row{display:flex;align-items:center;gap:1.4rem}
-.mcard img.av{width:5.6rem;height:5.6rem;border-radius:var(--r-sm);object-fit:cover;flex:0 0 auto}
-.mcard h5{font-size:1.7rem;font-weight:600;color:var(--ink)}
-.mcard p{font-size:1.4rem;color:var(--ink-faint)}
-.mcard__phone{display:inline-flex;align-items:center;gap:.8rem;font-size:1.7rem;font-weight:600;color:var(--ap-teal)}
-.mcard__phone svg{width:1.8rem;height:1.8rem}
-
-/* product rows (EVFi style) */
-.prow{display:flex;align-items:center;gap:1.6rem;padding:1.6rem 1.2rem;border-radius:var(--r-md);
-  transition:background var(--fast,.14s) var(--ease)}
-.prow:hover{background:rgba(0,169,145,.07)}
-.prow + .prow{border-top:1px solid var(--line)}
-.prow__ic{width:5.2rem;height:5.2rem;border-radius:var(--r-sm);background:var(--ap-offwhite);
-  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.prow__ic img{width:3.2rem;height:3.2rem;object-fit:contain}
-.prow__t h4{font-size:1.9rem;font-weight:600;color:var(--ink)}
-.prow__t p{font-size:1.45rem;color:var(--ink-faint)}
-.prow__arr{margin-left:auto;color:var(--ap-teal);opacity:.4;transition:.16s var(--ease)}
-.prow:hover .prow__arr{opacity:1;transform:translateX(.3rem)}
-
-/* solution image cards (EVFi style) */
-.scard{position:relative;border-radius:var(--r-md);overflow:hidden;min-height:20rem;
-  display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;
-  box-shadow:var(--shadow-2);transition:transform var(--normal,.28s) var(--ease)}
-.scard:hover{transform:translateY(-.4rem)}
-.scard::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,11,50,.05) 30%,rgba(9,11,50,.72));z-index:1}
-.scard img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.scard__c{position:relative;z-index:2;display:flex;flex-direction:column;gap:1.2rem;align-items:flex-start}
-.scard h4{font-size:2rem;font-weight:600;color:#fff}
-.scard .pill{display:inline-flex;align-items:center;gap:.6rem;background:var(--ap-crystal);color:var(--ap-navy);
-  font-size:1.4rem;font-weight:600;padding:.7rem 1.4rem;border-radius:var(--r-pill)}
+/* burger (mobile only) */
+.burger{display:none;width:4rem;height:100%;flex-direction:column;justify-content:center;gap:.5rem}
+.burger span{display:block;width:2.4rem;height:.3rem;border-radius:3px;background:var(--ap-navy);
+  transition:transform var(--t),opacity var(--t)}
+body.drawer-open .burger span:nth-child(1){transform:translateY(.8rem) rotate(45deg)}
+body.drawer-open .burger span:nth-child(2){opacity:0}
+body.drawer-open .burger span:nth-child(3){transform:translateY(-.8rem) rotate(-45deg)}
 
 /* ============================================================================
-   MOBILE DRAWER
+   MEGA MENUS — HemSol: full-width white sheet directly under the bar
    ============================================================================ */
-.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(92vw,42rem);z-index:120;
-  background:var(--ap-offwhite);transform:translateX(100%);transition:transform var(--normal,.32s) var(--ease-out);
-  display:flex;flex-direction:column;box-shadow:-2rem 0 5rem rgba(9,11,50,.2)}
-body.drawer-open .drawer{transform:translateX(0)}
-.drawer__top{display:flex;align-items:center;justify-content:space-between;padding:1.8rem 2rem;background:#fff;border-bottom:1px solid var(--line)}
-.drawer__top img{height:3rem}
-.drawer__close{width:4.4rem;height:4.4rem;border-radius:var(--r-md);background:rgba(9,11,50,.05);
-  display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--ap-navy)}
-.drawer__body{flex:1 1 auto;overflow-y:auto;padding:1.6rem;display:flex;flex-direction:column;gap:.8rem}
-.acc{background:#fff;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-1)}
-.acc__head{display:flex;align-items:center;justify-content:space-between;padding:1.8rem 2rem;font-size:1.9rem;font-weight:500;color:var(--ink)}
-.acc__head .chev{transition:transform var(--normal,.28s) var(--ease);opacity:.5}
-.acc.open .acc__head .chev{transform:rotate(180deg);opacity:1}
-.acc__body{max-height:0;overflow:hidden;transition:max-height var(--normal,.32s) var(--ease)}
-.acc__body-inner{padding:.4rem 1.2rem 1.6rem}
-.acc__link{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.4rem;border-radius:var(--r-sm);
-  font-size:1.6rem;color:var(--ink-muted)}
-.acc__link:active,.acc__link:hover{background:rgba(0,169,145,.08);color:var(--ap-teal)}
-.acc__link img{width:2.2rem;height:2.2rem;object-fit:contain}
-.drawer__foot{padding:1.6rem 2rem 2.4rem;display:flex;flex-direction:column;gap:1.4rem;background:#fff;border-top:1px solid var(--line)}
-.drawer__foot .cta{width:100%;justify-content:center;height:5.4rem;font-size:1.8rem;animation:none;box-shadow:0 .6rem 1.6rem -.4rem rgba(0,169,145,.5)}
-.drawer__rating{display:flex;align-items:center;justify-content:center;gap:.8rem;color:var(--ap-teal);font-weight:700;font-size:1.5rem;letter-spacing:.04em}
-.drawer__rating .stars{color:var(--ap-teal);letter-spacing:.1em}
+.mega{position:fixed;left:0;right:0;top:var(--header-h);z-index:90;
+  background:var(--ap-white);border-bottom:2px solid var(--hairline);
+  box-shadow:0 24px 40px -28px rgba(9,11,50,.25);
+  opacity:0;pointer-events:none;transition:none}
+.nav__item.open .mega{opacity:1;pointer-events:auto;transition:opacity var(--t)}
+.mega__in{max-width:var(--container);margin:0 auto;padding:3.2rem var(--wrap);display:flex;gap:0}
+
+/* editorial column (HemSol .sub-menu li) */
+.mcol{flex:1 1 0;min-width:0;padding:0 2.8rem 0 0}
+.mcol+.mcol{padding-left:2.8rem}
+.mcol__title{display:block;font-size:1.8rem;font-weight:600;color:var(--ink);
+  border-left:1px solid var(--line);padding:.4rem 0 .4rem 1.6rem;margin-bottom:1rem}
+a.mcol__title:hover{color:var(--ap-teal);border-color:var(--ap-teal)}
+.mitem{display:block;font-size:1.55rem;font-weight:400;color:var(--ink-muted);
+  border-left:1px solid var(--line);padding:.7rem 1.2rem .7rem 1.6rem;
+  transition:border-color var(--t),color var(--t),background var(--t)}
+.mitem:hover{color:var(--ap-teal);border-color:var(--ap-teal);background:rgba(0,169,145,.05)}
+.mitem span{display:block;font-size:1.35rem;color:var(--ink-faint);margin-top:.2rem}
+.mitem:hover span{color:var(--ink-muted)}
+
+/* the right-hand CTA block (HemSol .menu-cta) */
+.menu-cta{flex:0 0 30rem;border-left:1px solid var(--line);padding:.4rem 0 .4rem 2.8rem;
+  display:flex;flex-direction:column;align-items:flex-start}
+.menu-cta h5{font-size:1.9rem;font-weight:600;color:var(--ink);margin-bottom:.8rem}
+.menu-cta p{font-size:1.5rem;color:var(--ink-muted);margin-bottom:2.2rem;max-width:34ch}
+.menu-cta .button{display:inline-flex;align-items:center;gap:.9rem;height:4.4rem;padding:0 2.2rem;
+  border-radius:var(--r-btn);background:var(--ap-teal);color:#fff;font-size:1.55rem;font-weight:600;
+  transition:background var(--t)}
+.menu-cta .button:hover{background:var(--ap-teal-hover)}
+.menu-cta .button svg{width:1.7rem;height:1.7rem}
+
+/* Lösningar: calm editorial cards — whole card is the link, no button */
+.mega--solutions .mega__in{gap:2.4rem}
+.lcard{position:relative;flex:1 1 0;border-radius:var(--r-md);overflow:hidden;min-height:19rem;
+  display:flex;align-items:flex-end}
+.lcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .35s ease-out}
+.lcard:hover img{transform:scale(1.03)}
+.lcard::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(185deg,rgba(9,11,50,0) 35%,rgba(9,11,50,.78));z-index:1}
+.lcard__t{position:relative;z-index:2;padding:2rem;width:100%;display:flex;align-items:flex-end;
+  justify-content:space-between;gap:1rem}
+.lcard h4{font-size:2rem;font-weight:600;color:#fff}
+.lcard p{font-size:1.4rem;color:rgba(255,255,255,.78);margin-top:.2rem;font-weight:300}
+.lcard .go{flex:0 0 auto;width:3.6rem;height:3.6rem;border-radius:50%;background:rgba(255,255,255,.16);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.7rem;
+  transition:background var(--t),transform var(--t)}
+.lcard:hover .go{background:var(--ap-teal);transform:translateX(.3rem)}
 
 /* ============================================================================
-   RESPONSIVE
+   MOBILE — HemSol: logo · CTA · burger in the bar (always sticky),
+   drawer slides in UNDER the bar, burger morphs to X
    ============================================================================ */
+.drawer{position:fixed;top:var(--header-h);right:0;z-index:95;
+  height:calc(100dvh - var(--header-h));width:min(100%,44rem);
+  background:var(--ap-white);box-shadow:inset 0 1px 2px rgba(0,0,0,.08);
+  transform:translateX(100%);opacity:0;pointer-events:none;
+  transition:transform var(--t),opacity var(--t);
+  overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column}
+body.drawer-open .drawer{transform:translateX(0);opacity:1;pointer-events:auto}
+
+.acc__head{width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:1.9rem 2.4rem;font-size:1.8rem;font-weight:500;color:var(--ink);
+  border-bottom:2px solid var(--line-soft);text-align:left}
+.acc__head .chev{width:1.4rem;height:1.4rem;opacity:.5;transition:transform var(--t)}
+.acc.open>.acc__head{background:rgba(0,169,145,.06);border-color:var(--ap-teal)}
+.acc.open>.acc__head .chev{transform:rotate(180deg);opacity:1}
+.acc__body{max-height:0;overflow:hidden;transition:max-height .28s ease-out}
+
+/* level 2 (groups inside Tjänster) */
+.acc--sub .acc__head{padding:1.5rem 2.4rem 1.5rem 3.2rem;font-size:1.65rem;font-weight:500;
+  border-bottom:1px dashed rgba(15,18,60,.08)}
+.m-item{display:block;padding:1.3rem 2.4rem 1.3rem 4rem;font-size:1.55rem;color:var(--ink-muted);
+  border-bottom:1px dashed rgba(15,18,60,.08)}
+.m-item:active{background:rgba(0,169,145,.07);color:var(--ap-teal)}
+.m-item span{display:block;font-size:1.3rem;color:var(--ink-faint)}
+.drawer__phone{margin-top:auto;display:flex;align-items:center;gap:1rem;justify-content:center;
+  padding:2rem;font-size:1.7rem;font-weight:500;color:var(--ap-teal);border-top:2px solid var(--line-soft)}
+.drawer__phone svg{width:1.8rem;height:1.8rem}
+
+/* ---- breakpoints ---- */
 @media (max-width:1180px){
-  .mega--services .mega__grid{grid-template-columns:repeat(2,1fr)}
-  .mcol:nth-child(3){border-left:0;padding-left:2rem}
+  .nav__link{padding:0 1.4rem;font-size:1.6rem}
+  .menu-cta{flex-basis:26rem}
 }
 @media (max-width:992px){
-  .nav,.hdr__right .cta{display:none}
+  :root{--header-h:6.4rem}
+  .nav{display:none}
   .burger{display:flex}
-  .hdr__bar{gap:1.2rem}
-  :root{--header-h:6.8rem}
+  .cta{height:4rem;padding:0 1.8rem;font-size:1.5rem}
+  .hdr__right{gap:1.6rem}
 }
-@media (min-width:993px){ .drawer,.burger{display:none} }
+@media (min-width:993px){.drawer{display:none}}
 @media (max-width:560px){
-  .hdr{padding:.8rem 1.2rem}
-  .hdr__bar{padding:0 .8rem 0 1.4rem;border-radius:var(--r-md)}
-  .hdr__logo img{height:2.9rem}
+  .hdr__logo img{width:100px}                            /* HemSol: 100px */
+  :root{--wrap:1.6rem}
 }
+@media (max-width:400px){
+  .cta{font-size:1.3rem;padding:0 1.4rem;height:3.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-/* ---- demo page scaffolding (not part of header) ---- */
-.demo{padding-top:calc(var(--header-h) + 6rem)}
-.demo section{max-width:var(--container);margin:0 auto 3rem;padding:0 clamp(1.6rem,4vw,4rem)}
-.demo h1{font-size:clamp(3.2rem,2.4rem+2vw,5.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;max-width:22ch}
+/* ---- demo page scaffolding (not part of the header) ---- */
+.demo section{max-width:var(--container);margin:0 auto;padding:6rem var(--wrap) 0}
+.demo h1{font-size:clamp(3.2rem,2.4rem + 2vw,5.2rem);font-weight:800;letter-spacing:-.02em;
+  line-height:1.05;max-width:22ch}
 .demo h1 em{font-style:normal;color:var(--ap-teal)}
 .demo .sub{font-size:1.9rem;color:var(--ink-muted);max-width:52ch;margin-top:1.6rem}
-.demo .filler{height:60vh;border-radius:var(--r-lg);margin-top:4rem;
+.demo .filler{height:70vh;border-radius:var(--r-md);margin-top:4rem;
   background:linear-gradient(135deg,#eaeff3,#f5f9ff);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;color:var(--ink-faint);font-size:1.6rem}
-.demo .note{margin-top:1.2rem;font-size:1.4rem;color:var(--ink-faint)}
 </style>
 </head>
 <body>
 <div class="dim" data-close></div>
 
 <!-- ============================ HEADER ============================ -->
-<header class="hdr" id="hdr">
-  <div class="hdr__bar">
-    <a class="hdr__logo" href="#" aria-label="Ampy — hem">
+<header class="hdr">
+  <div class="hdr__in">
+    <a class="hdr__logo" href="https://ampy.se" aria-label="Ampy — hem">
       <img src="https://ampy.se/wp-content/uploads/Ampy-logo.svg" alt="Ampy">
     </a>
 
     <nav class="nav" aria-label="Huvudmeny">
-      <!-- TJÄNSTER (tier 1) -->
+
+      <!-- TJÄNSTER — full live service list -->
       <div class="nav__item" data-menu>
         <button class="nav__link">Tjänster
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="mega mega--services">
-          <div class="mega__panel">
-            <div class="mega__grid">
-              <div class="mcol">
-                <div class="mcol__head"><img class="ic" src="https://ampy.se/wp-content/uploads/Shovel-icon.svg" alt=""><h4>Elinstallationer</h4></div>
-                <a class="mlink" href="#">Ny elcentral / byte <span class="arr">→</span></a>
-                <a class="mlink" href="#">Dra ny el / eluttag <span class="arr">→</span></a>
-                <a class="mlink" href="#">Elbesiktning <span class="arr">→</span></a>
-                <a class="mlink" href="#">Felsökning <span class="arr">→</span></a>
-              </div>
-              <div class="mcol">
-                <div class="mcol__head"><img class="ic" src="https://ampy.se/wp-content/uploads/light-bulb.svg" alt=""><h4>Belysning</h4></div>
-                <a class="mlink" href="#">Inomhusbelysning <span class="arr">→</span></a>
-                <a class="mlink" href="#">Utomhus & fasad <span class="arr">→</span></a>
-                <a class="mlink" href="#">Spotlights & dimmer <span class="arr">→</span></a>
-                <a class="mlink" href="#">LED-byte <span class="arr">→</span></a>
-              </div>
-              <div class="mcol">
-                <div class="mcol__head"><img class="ic" src="https://ampy.se/wp-content/uploads/window.svg" alt=""><h4>Kök &amp; Badrum</h4></div>
-                <a class="mlink" href="#">Kök – el &amp; vitvaror <span class="arr">→</span></a>
-                <a class="mlink" href="#">Badrum &amp; golvvärme <span class="arr">→</span></a>
-                <a class="mlink" href="#">Renovering <span class="arr">→</span></a>
-              </div>
-              <div class="mcol">
-                <div class="mcard">
-                  <div class="mcard__row">
-                    <img class="av" src="https://ampy.se/wp-content/uploads/Edvin-600x600.webp" alt="Edvin, elektriker">
-                    <div><h5>Prata med en elektriker</h5><p>Osäker på vad du behöver? Vi hjälper dig rätt.</p></div>
-                  </div>
-                  <a class="mcard__phone" href="tel:+46102657979">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-                    010-265 79 79
-                  </a>
-                </div>
-              </div>
+        <div class="mega">
+          <div class="mega__in">
+            <div class="mcol">
+              <a class="mcol__title" href="https://ampy.se/elinstallation/">Elinstallationer</a>
+              <a class="mitem" href="https://ampy.se/elservice/elcentral/">Byte av elcentral</a>
+              <a class="mitem" href="https://ampy.se/elservice/elbesiktning/">Elbesiktning</a>
+              <a class="mitem" href="https://ampy.se/elservice/felsokning-av-el/">Felsökning av el</a>
+              <a class="mitem" href="https://ampy.se/elservice/jordfelsbrytare/">Jordfelsbrytare</a>
+              <a class="mitem" href="https://ampy.se/elservice/lastbalansering/">Lastbalansering</a>
+              <a class="mitem" href="https://ampy.se/elservice/smarta-hem/">Smarta hem</a>
+            </div>
+            <div class="mcol">
+              <a class="mcol__title" href="https://ampy.se/elservice/belysning/">Belysning</a>
+              <a class="mitem" href="https://ampy.se/elservice/inomhusbelysning/">Inomhusbelysning</a>
+              <a class="mitem" href="https://ampy.se/elservice/utomhusbelysning/">Utomhusbelysning</a>
+              <a class="mitem" href="https://ampy.se/elservice/spotlights/">Installation av spotlights</a>
+              <a class="mitem" href="https://ampy.se/elservice/strombrytare/">Installera strömbrytare</a>
+              <a class="mitem" href="https://ampy.se/elservice/glodlampa/">Byta ljuskällor</a>
+            </div>
+            <div class="mcol">
+              <span class="mcol__title">Kök &amp; Badrum</span>
+              <a class="mitem" href="https://ampy.se/elservice/kok/">Elinstallation i kök</a>
+              <a class="mitem" href="https://ampy.se/elservice/badrum/">Elinstallation i badrum</a>
+              <a class="mitem" href="https://ampy.se/elservice/golvvarme/">Golvvärme</a>
+              <a class="mitem" href="https://ampy.se/elservice/vitvaror/">Vitvaror</a>
+              <a class="mitem" href="https://ampy.se/elservice/ugn-spis/">Ugn &amp; spis</a>
+              <a class="mitem" href="https://ampy.se/elservice/elrenovering/">Elrenovering</a>
+            </div>
+            <div class="mcol">
+              <span class="mcol__title">Populärt</span>
+              <a class="mitem" href="https://ampy.se/eljour/">Eljour<span>Akut hjälp, dygnet runt</span></a>
+              <a class="mitem" href="https://ampy.se/elektriker/">Elektriker<span>Boka en behörig elektriker</span></a>
+              <a class="mitem" href="https://ampy.se/laddbox/">Laddbox<span>Installation av hemmaladdning</span></a>
+              <a class="mitem" href="https://ampy.se/batterilagring/">Batterilagring<span>Lagra el, kapa effekttoppar</span></a>
+            </div>
+            <div class="menu-cta">
+              <h5>Prata med en elektriker</h5>
+              <p>Osäker på vad som behöver göras? Ring oss så hjälper vi dig rätt.</p>
+              <a class="button" href="tel:+46102657979">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+                010-265 79 79
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- PRODUKTER (tier 2 + 3) -->
+      <!-- PRODUKTER — HemSol editorial list + guides + CTA block -->
       <div class="nav__item" data-menu>
         <button class="nav__link">Produkter
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="mega mega--products">
-          <div class="mega__panel">
-            <div class="mega__grid">
-              <div class="mcol" style="padding-right:0">
-                <div class="mcol__head"><h4>Ladda &amp; lagra</h4></div>
-                <a class="prow" href="#">
-                  <span class="prow__ic"><img src="https://ampy.se/wp-content/uploads/Laddbox_icon.svg" alt=""></span>
-                  <span class="prow__t"><h4>Laddboxar</h4><p>Hemmaladdning för villa, BRF &amp; företag</p></span>
-                  <span class="prow__arr">→</span>
-                </a>
-                <a class="prow" href="#">
-                  <span class="prow__ic"><img src="https://ampy.se/wp-content/uploads/batteri_icon-1.svg" alt=""></span>
-                  <span class="prow__t"><h4>Batterilagring</h4><p>Solcellsbatteri &amp; smart energilagring</p></span>
-                  <span class="prow__arr">→</span>
-                </a>
-              </div>
-              <div class="mcol">
-                <div class="scard" style="min-height:100%">
-                  <img class="bg" src="https://ampy.se/wp-content/uploads/product_1.webp" alt="">
-                  <div class="scard__c">
-                    <h4>Se om det lönar sig</h4>
-                    <a class="pill" href="#">Räkna på laddbox →</a>
-                  </div>
-                </div>
-              </div>
-              <div class="mcol">
-                <div class="mcol__head"><h4>Populärt</h4></div>
-                <a class="mlink" href="#">Bäst i test – laddbox <span class="arr">→</span></a>
-                <a class="mlink" href="#">Jämför laddboxar <span class="arr">→</span></a>
-                <a class="mlink" href="#">Solcellsbatteri – guide <span class="arr">→</span></a>
-                <a class="mlink" href="#">Grön teknik-avdraget <span class="arr">→</span></a>
-              </div>
+        <div class="mega">
+          <div class="mega__in">
+            <div class="mcol">
+              <span class="mcol__title">Ladda &amp; lagra</span>
+              <a class="mitem" href="https://ampy.se/laddboxar/">Laddboxar<span>Hemmaladdning för villa, BRF och företag</span></a>
+              <a class="mitem" href="https://ampy.se/solcellsbatterier/">Batterilagring<span>Solcellsbatteri och smart energilagring</span></a>
+            </div>
+            <div class="mcol">
+              <span class="mcol__title">Guider &amp; verktyg</span>
+              <a class="mitem" href="#">Jämför laddboxar</a>
+              <a class="mitem" href="#">Laddbox bäst i test</a>
+              <a class="mitem" href="#">Grön teknik-avdraget 2026</a>
+              <a class="mitem" href="#">Guide till solcellsbatterier</a>
+            </div>
+            <div class="menu-cta">
+              <h5>Se om det lönar sig</h5>
+              <p>Räkna på laddbox eller batteri utifrån din förbrukning, innan du pratar med någon.</p>
+              <a class="button" href="#">Räkna på laddbox</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- LÖSNINGAR (segments) -->
+      <!-- LÖSNINGAR — calm cards, whole card = link -->
       <div class="nav__item" data-menu>
         <button class="nav__link">Lösningar
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="mega mega--solutions">
-          <div class="mega__panel">
-            <div class="mega__grid">
-              <a class="scard" href="#">
-                <img class="bg" src="https://ampy.se/wp-content/uploads/product_1.webp" alt="">
-                <div class="scard__c"><h4>Bostadsrättsförening</h4><span class="pill">Läs mer →</span></div>
-              </a>
-              <a class="scard" href="#">
-                <img class="bg" src="https://ampy.se/wp-content/uploads/foretag.webp" alt="">
-                <div class="scard__c"><h4>Företag</h4><span class="pill">Läs mer →</span></div>
-              </a>
-              <a class="scard" href="#">
-                <img class="bg" src="https://ampy.se/wp-content/uploads/kommun.webp" alt="">
-                <div class="scard__c"><h4>Kommun</h4><span class="pill">Läs mer →</span></div>
-              </a>
-            </div>
+          <div class="mega__in">
+            <a class="lcard" href="https://ampy.se/bostadsrattsforening/">
+              <img src="https://ampy.se/wp-content/uploads/product_1.webp" alt="">
+              <div class="lcard__t">
+                <div><h4>Bostadsrättsförening</h4><p>El, laddning och belysning för föreningen</p></div>
+                <span class="go">→</span>
+              </div>
+            </a>
+            <a class="lcard" href="https://ampy.se/foretag/">
+              <img src="https://ampy.se/wp-content/uploads/foretag.webp" alt="">
+              <div class="lcard__t">
+                <div><h4>Företag</h4><p>Elpartner för kontor och verksamheter</p></div>
+                <span class="go">→</span>
+              </div>
+            </a>
+            <a class="lcard" href="https://ampy.se/kommuner/">
+              <img src="https://ampy.se/wp-content/uploads/kommun.webp" alt="">
+              <div class="lcard__t">
+                <div><h4>Kommun</h4><p>Upphandlad elpartner för det offentliga</p></div>
+                <span class="go">→</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
     </nav>
 
     <div class="hdr__right">
-      <a class="cta" href="#"><span class="cta__dot"></span>Boka rådgivning</a>
-      <button class="burger" id="burger" aria-label="Öppna meny"><span></span><span></span><span></span></button>
+      <a class="cta" href="https://ampy.se/offert/">Boka rådgivning</a>
+      <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- ============================ MOBILE DRAWER ============================ -->
+<!-- ============================ MOBILE DRAWER (under the bar) ============================ -->
 <aside class="drawer" aria-label="Mobilmeny">
-  <div class="drawer__top">
-    <img src="https://ampy.se/wp-content/uploads/Ampy-logo.svg" alt="Ampy">
-    <button class="drawer__close" data-close aria-label="Stäng meny">✕</button>
-  </div>
-  <div class="drawer__body">
-    <div class="acc" data-acc>
-      <button class="acc__head">Tjänster <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="acc__body"><div class="acc__body-inner">
-        <a class="acc__link" href="#"><img src="https://ampy.se/wp-content/uploads/Shovel-icon.svg" alt="">Elinstallationer</a>
-        <a class="acc__link" href="#"><img src="https://ampy.se/wp-content/uploads/light-bulb.svg" alt="">Belysning</a>
-        <a class="acc__link" href="#"><img src="https://ampy.se/wp-content/uploads/window.svg" alt="">Kök &amp; Badrum</a>
-      </div></div>
+  <div class="acc" data-acc>
+    <button class="acc__head">Tjänster
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc__body">
+      <div class="acc acc--sub" data-acc>
+        <button class="acc__head">Elinstallationer
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <a class="m-item" href="https://ampy.se/elservice/elcentral/">Byte av elcentral</a>
+          <a class="m-item" href="https://ampy.se/elservice/elbesiktning/">Elbesiktning</a>
+          <a class="m-item" href="https://ampy.se/elservice/felsokning-av-el/">Felsökning av el</a>
+          <a class="m-item" href="https://ampy.se/elservice/jordfelsbrytare/">Jordfelsbrytare</a>
+          <a class="m-item" href="https://ampy.se/elservice/lastbalansering/">Lastbalansering</a>
+          <a class="m-item" href="https://ampy.se/elservice/smarta-hem/">Smarta hem</a>
+        </div>
+      </div>
+      <div class="acc acc--sub" data-acc>
+        <button class="acc__head">Belysning
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <a class="m-item" href="https://ampy.se/elservice/inomhusbelysning/">Inomhusbelysning</a>
+          <a class="m-item" href="https://ampy.se/elservice/utomhusbelysning/">Utomhusbelysning</a>
+          <a class="m-item" href="https://ampy.se/elservice/spotlights/">Installation av spotlights</a>
+          <a class="m-item" href="https://ampy.se/elservice/strombrytare/">Installera strömbrytare</a>
+          <a class="m-item" href="https://ampy.se/elservice/glodlampa/">Byta ljuskällor</a>
+        </div>
+      </div>
+      <div class="acc acc--sub" data-acc>
+        <button class="acc__head">Kök &amp; Badrum
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <a class="m-item" href="https://ampy.se/elservice/kok/">Elinstallation i kök</a>
+          <a class="m-item" href="https://ampy.se/elservice/badrum/">Elinstallation i badrum</a>
+          <a class="m-item" href="https://ampy.se/elservice/golvvarme/">Golvvärme</a>
+          <a class="m-item" href="https://ampy.se/elservice/vitvaror/">Vitvaror</a>
+          <a class="m-item" href="https://ampy.se/elservice/ugn-spis/">Ugn &amp; spis</a>
+          <a class="m-item" href="https://ampy.se/elservice/elrenovering/">Elrenovering</a>
+        </div>
+      </div>
+      <div class="acc acc--sub" data-acc>
+        <button class="acc__head">Populärt
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <a class="m-item" href="https://ampy.se/eljour/">Eljour</a>
+          <a class="m-item" href="https://ampy.se/elektriker/">Elektriker</a>
+          <a class="m-item" href="https://ampy.se/laddbox/">Laddbox</a>
+          <a class="m-item" href="https://ampy.se/batterilagring/">Batterilagring</a>
+        </div>
+      </div>
     </div>
-    <div class="acc" data-acc>
-      <button class="acc__head">Produkter <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="acc__body"><div class="acc__body-inner">
-        <a class="acc__link" href="#"><img src="https://ampy.se/wp-content/uploads/Laddbox_icon.svg" alt="">Laddboxar</a>
-        <a class="acc__link" href="#"><img src="https://ampy.se/wp-content/uploads/batteri_icon-1.svg" alt="">Batterilagring</a>
-      </div></div>
-    </div>
-    <div class="acc" data-acc>
-      <button class="acc__head">Lösningar <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="acc__body"><div class="acc__body-inner">
-        <a class="acc__link" href="#">Bostadsrättsförening</a>
-        <a class="acc__link" href="#">Företag</a>
-        <a class="acc__link" href="#">Kommun</a>
-      </div></div>
+  </div>
+
+  <div class="acc" data-acc>
+    <button class="acc__head">Produkter
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc__body">
+      <a class="m-item" href="https://ampy.se/laddboxar/">Laddboxar<span>Hemmaladdning för villa, BRF och företag</span></a>
+      <a class="m-item" href="https://ampy.se/solcellsbatterier/">Batterilagring<span>Solcellsbatteri och smart energilagring</span></a>
+      <a class="m-item" href="#">Jämför laddboxar</a>
+      <a class="m-item" href="#">Räkna på laddbox</a>
     </div>
   </div>
-  <div class="drawer__foot">
-    <a class="cta" href="#"><span class="cta__dot"></span>Boka rådgivning</a>
+
+  <div class="acc" data-acc>
+    <button class="acc__head">Lösningar
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc__body">
+      <a class="m-item" href="https://ampy.se/bostadsrattsforening/">Bostadsrättsförening</a>
+      <a class="m-item" href="https://ampy.se/foretag/">Företag</a>
+      <a class="m-item" href="https://ampy.se/kommuner/">Kommun</a>
+    </div>
   </div>
+
+  <a class="drawer__phone" href="tel:+46102657979">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    010-265 79 79
+  </a>
 </aside>
 
 <!-- ============================ DEMO PAGE ============================ -->
 <main class="demo">
   <section>
     <h1>Elektriker i Stockholm som <em>berättar sanningen</em>, inte bara priset.</h1>
-    <p class="sub">Prototyp av den nya headern. Scrolla för att se hur baren följer med och stramas åt, hovra över menyerna på desktop, och testa hamburgaren i mobilläge.</p>
-    <div class="filler">↓ scrolla — headern får djupare skugga och krymper mjukt</div>
-    <p class="note">Bilder &amp; ikoner laddas live från ampy.se. Undermenyernas länkar är platshållare tills de riktiga WP-menyerna (29–32) kopplas in.</p>
-    <div class="filler" style="height:90vh">innehåll</div>
-    <div class="filler" style="height:90vh">innehåll</div>
+    <p class="sub">Prototyp v2. Headern ligger kant till kant som HemSol, med kontrastlinjen under, och hänger alltid med när du scrollar. Hovra menyerna på desktop, testa hamburgaren och CTA:n i mobilläge.</p>
+    <div class="filler">innehåll</div>
+    <div class="filler">innehåll</div>
   </section>
 </main>
 
 <script>
-/* header scroll state */
-const hdr=document.getElementById('hdr');
-const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>8);
-window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-
-/* desktop mega-menu: hover-intent (open on enter, close with small delay so a corner-cut doesn't snap it shut) */
+/* desktop mega: hover-intent (small close delay so corner-cutting doesn't snap it shut) */
 let closeTimer;
 document.querySelectorAll('.nav__item[data-menu]').forEach(item=>{
   item.addEventListener('mouseenter',()=>{
@@ -410,29 +448,45 @@ document.querySelectorAll('.nav__item[data-menu]').forEach(item=>{
   });
   item.addEventListener('mouseleave',()=>{
     closeTimer=setTimeout(()=>{item.classList.remove('open');
-      if(!document.querySelector('.nav__item:hover'))document.body.classList.remove('menu-open');},160);
+      if(!document.querySelector('.nav__item:hover, .mega:hover'))document.body.classList.remove('menu-open');},160);
   });
 });
 
-/* mobile drawer */
+/* mobile drawer: burger toggles, morphs to X */
 const burger=document.getElementById('burger');
-const open=()=>document.body.classList.add('drawer-open');
-const close=()=>document.body.classList.remove('drawer-open','menu-open');
-burger.addEventListener('click',open);
-document.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',close));
+burger.addEventListener('click',()=>{
+  const open=document.body.classList.toggle('drawer-open');
+  burger.setAttribute('aria-expanded',open);
+});
+document.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',()=>{
+  document.body.classList.remove('drawer-open','menu-open');
+  burger.setAttribute('aria-expanded','false');
+}));
 
-/* mobile accordions */
+/* accordions (two levels) — recalc parent height when a sub opens */
 document.querySelectorAll('[data-acc]').forEach(acc=>{
-  const head=acc.querySelector('.acc__head');const body=acc.querySelector('.acc__body');
+  const head=acc.querySelector(':scope > .acc__head');
+  const body=acc.querySelector(':scope > .acc__body');
   head.addEventListener('click',()=>{
     const isOpen=acc.classList.contains('open');
-    document.querySelectorAll('[data-acc].open').forEach(o=>{o.classList.remove('open');o.querySelector('.acc__body').style.maxHeight=null});
-    if(!isOpen){acc.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+    const parent=acc.parentElement.closest('[data-acc]');
+    acc.parentElement.querySelectorAll(':scope > [data-acc].open').forEach(o=>{
+      if(o!==acc){o.classList.remove('open');o.querySelector(':scope > .acc__body').style.maxHeight=null;}
+    });
+    if(isOpen){acc.classList.remove('open');body.style.maxHeight=null;}
+    else{acc.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+    if(parent){const pb=parent.querySelector(':scope > .acc__body');
+      /* child is still clipped mid-animation, so sum in its full content height */
+      pb.style.maxHeight=(pb.scrollHeight+body.scrollHeight)+'px';}
   });
 });
 
 /* esc closes everything */
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){close();document.querySelectorAll('.nav__item.open').forEach(o=>o.classList.remove('open'));document.body.classList.remove('menu-open');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){
+  document.body.classList.remove('drawer-open','menu-open');
+  document.querySelectorAll('.nav__item.open').forEach(o=>o.classList.remove('open'));
+  burger.setAttribute('aria-expanded','false');
+}});
 </script>
 </body>
 </html>
