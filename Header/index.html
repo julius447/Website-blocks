@@ -24,7 +24,7 @@
   --ap-green:#39c281; --ap-mint:#55ff9a; --ap-offwhite:#f5f9ff; --ap-white:#fff;
   --ink:#0f123c; --ink-muted:#565e82; --ink-faint:#6a7190;
   --line:rgba(15,18,60,.10); --line-soft:rgba(15,18,60,.06);
-  --hairline:#e7edf5;                    /* light HemSol-style separator on #f5f9ff */
+  --hairline:#dbe4f0;                    /* light HemSol-style separator on #f5f9ff */
   --font:"Outfit",system-ui,-apple-system,sans-serif;
   --r-sm:.8rem; --r-md:1.4rem; --r-lg:2rem; --r-btn:1.5rem;
   --t:.2s ease-out;
@@ -52,6 +52,8 @@ body.menu-open .dim,body.drawer-open .dim{opacity:1;pointer-events:auto}
   background:var(--ap-offwhite);
   border-bottom:1px solid var(--hairline);
   box-shadow:0 4px 14px -10px rgba(15,18,60,.14)}   /* thin line + soft float (HemSol) */
+/* when a mega is open the bar + sheet read as one surface — drop the seam */
+body.menu-open .hdr{border-bottom-color:transparent}
 .hdr__in{max-width:var(--container);margin:0 auto;height:100%;
   display:flex;align-items:center;padding:0 var(--wrap)}
 .hdr__logo{flex:0 0 auto;display:flex;align-items:center}
@@ -183,12 +185,12 @@ a.mcol__title:hover{color:var(--ap-teal)}
   overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column}
 body.drawer-open .drawer{transform:translateX(0);opacity:1;pointer-events:auto}
 /* --- Evify clone: 20px content inset, inset hairlines, light eyebrows --- */
-.drawer__eyebrow{font-size:1.1rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:#73757d;padding:3rem 2rem .6rem}
+.drawer__eyebrow{font-size:1.1rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:#73757d;padding:3.2rem 2rem .8rem}
 .drawer__list{padding:0 2rem}
 
 .acc__head{width:100%;display:flex;align-items:center;justify-content:space-between;
-  padding:1.6rem 0;font-size:1.9rem;font-weight:400;color:#14151a;text-align:left;
+  padding:1.5rem 0;font-size:1.9rem;font-weight:400;color:#14151a;text-align:left;
   border-bottom:1px solid #d5d5dc}
 .acc__head .chev{width:1.6rem;height:1.6rem;color:currentColor;opacity:.65;transition:transform var(--t)}
 .acc.open>.acc__head .chev{transform:rotate(180deg);opacity:1}
@@ -197,7 +199,7 @@ body.drawer-open .drawer{transform:translateX(0);opacity:1;pointer-events:auto}
 /* Tjänster sub-accordions — Evify product-row treatment (icon + 18px/500) */
 .acc--sub{padding-left:1.4rem}
 .acc--sub .acc__head{padding:1.5rem 0;font-size:1.8rem;font-weight:500;color:#14151a;
-  border-bottom:1px solid rgba(0,0,0,.14)}
+  border-bottom:1px solid rgba(0,0,0,.2)}
 .acc--sub .acc__head .ttl{display:flex;align-items:center;gap:1.4rem}
 .acc--sub .acc__head .ttl img{width:2.4rem;height:2.4rem;object-fit:contain}
 /* leaf links — Evify guide sub-links (16px/400, inset hairline) */
@@ -209,14 +211,14 @@ body.drawer-open .drawer{transform:translateX(0);opacity:1;pointer-events:auto}
 /* Produkter mobile — Evify: product rows (thumb + 18px/500 name) then guides */
 .m-prodwrap{padding-left:1.4rem}
 .m-prod{display:flex;align-items:center;gap:1.6rem;padding:1.6rem 0;
-  border-bottom:1px solid rgba(0,0,0,.18)}
+  border-bottom:1px solid rgba(0,0,0,.2)}
 .m-prod__img{flex:0 0 auto;width:5rem;height:5rem;border-radius:1rem;overflow:hidden;
   background:var(--ap-white);border:1px solid var(--line-soft)}
 .m-prod__img img{width:100%;height:100%;object-fit:cover}
 .m-prod__name{font-size:1.8rem;font-weight:500;color:#14151a}
 .m-prod__arr{margin-left:auto;width:1.5rem;height:1.5rem;color:#9a9aa0;flex:0 0 auto}
-.m-sub-label{display:block;font-size:1.1rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:#73757d;margin:2.4rem 0 .2rem}
+.m-sub-label{display:block;font-size:1.1rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:#73757d;margin:3.2rem 0 .8rem}
 .m-sub{display:block;padding:1rem 0;font-size:1.6rem;font-weight:400;color:#14151a;
   border-bottom:1px solid #d5d5dc}
 .m-sub:active{color:var(--ap-teal)}
@@ -475,12 +477,12 @@ body.drawer-open .drawer{transform:translateX(0);opacity:1;pointer-events:auto}
       </button>
       <div class="acc__body"><div class="m-prodwrap">
         <a class="m-prod" href="https://ampy.se/laddboxar/">
-          <span class="m-prod__img"><img src="assets/laddboxar.webp" alt="Laddboxar"></span>
+          <span class="m-prod__img"><img src="assets/laddboxar.webp" alt=""></span>
           <span class="m-prod__name">Laddboxar</span>
           <svg class="m-prod__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
         </a>
         <a class="m-prod" href="https://ampy.se/solcellsbatterier/">
-          <span class="m-prod__img"><img src="assets/batteri.webp" alt="Solcellsbatterier"></span>
+          <span class="m-prod__img"><img src="assets/batteri.webp" alt=""></span>
           <span class="m-prod__name">Solcellsbatterier</span>
           <svg class="m-prod__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
         </a>
@@ -575,6 +577,9 @@ document.querySelectorAll('[data-acc]').forEach(acc=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){
   const open=document.querySelector('.nav__item.open');if(open)open.querySelector('.nav__link').focus();
   closeMegas();setDrawer(false);}});
+
+/* decorative chevrons/arrows/phone glyphs are named by adjacent text — hide from AT */
+document.querySelectorAll('.hdr svg, .drawer svg').forEach(s=>s.setAttribute('aria-hidden','true'));
 </script>
 </body>
 </html>
