@@ -1,18 +1,28 @@
 # Header
 
-Ampy header / navigation redesign (prototype).
+Ampy header / navigation redesign (prototype). Self-contained `index.html` +
+generated product imagery in `assets/`.
 
-- `index.html` — self-contained: real Ampy `ap*` tokens, real ampy.se assets, HemSol-style
-  scroll + pulse CTA + dim overlay, EVFi-style mega-menus, mobile drawer.
-- Verified in-browser on desktop, iPad (1024), and mobile (375).
+- Real Ampy `ap*` tokens, real ampy.se assets, HemSol scroll model, EVFi mega-menu IA.
+- Verified in-browser on desktop, iPad (1024) and mobile (375).
+- Loads Outfit via Google Fonts for the prototype; production self-hosts it (GDPR).
 
-**Placeholders:** submenu leaf links are scaffold — swap for the real WP menus (29–32) at wire-up.
-**Note:** loads Outfit from Google Fonts for the prototype; production self-hosts it (GDPR).
+## assets/  (product photos — hand these to the developer)
+- `laddboxar.webp` (1400px, ~19 kB) + `laddboxar-produktbild.png` (2400px full-res)
+  — Easee Charge Up front, Zaptec Go back-left, Charge Amps Luna back-right.
+  Generated with Higgsfield **Nano Banana Pro** from the real product packshots.
+- `batteri.webp` (1400px) + `solcellsbatterier-produktbild.png` (2400px full-res)
+  — SAJ front + Homevolt behind. **INTERIM: 2 of 3** — the Enershare image was not
+  available, so the final 3-unit shot (SAJ front · Homevolt right · Enershare left)
+  still needs the Enershare source photo, then a re-generate.
 
-## Locked decisions (2026-07-09)
-1. Labels kept: Tjänster · Produkter · Lösningar
-2. CTA: "Boka rådgivning" — green-gradient pill + dark pulse dot
-3. Google rating removed from the header
-4. Tredjepartsinstallation dropped from Lösningar
+## Locked / applied this round (owner feedback r3)
+1. Menu background = site bg `#f5f9ff` (verified), grey separator line kept.
+2. Tjänster: expert card removed → 4 balanced columns, one-line descriptions.
+3. Produkter: icon container → generated product photo per tile.
+5. Produkter: Guider & verktyg pulled in (killed the right-side whitespace).
+6. Lösningar: 4 cards (Privatperson→/elektriker/ added), copy length-balanced.
+7. CTA: solid teal `#00a991` (no gradient), pulse dot kept, hover = darker teal, no move.
+8. Mobile: Evify pattern — "MENY" eyebrow, flat accordions, "Ring en expert" call CTA.
 
-Next: convert to Bricks paste-JSON + 3-file FluentSnippets (CSS / PHP+HTML / JS).
+Next: convert to Bricks paste-JSON + 3-file FluentSnippets.
