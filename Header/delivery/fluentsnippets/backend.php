@@ -1,0 +1,266 @@
+<?php
+/**
+ * Ampy Header — FluentSnippets: "Functions – PHP Snippet", run: Frontend & Backend.
+ * Registers the [ampy_header] shortcode. Drop [ampy_header] into a Bricks
+ * SHORTCODE element at the top of the header template (not the Code element).
+ * FORMAT ONLY — markup is byte-equivalent to the approved prototype.
+ *
+ * Assets: upload the two generated composites to /wp-content/uploads/ as
+ *   ampy-laddboxar-mega.webp  and  ampy-solcellsbatterier-mega.webp
+ * (all other icons/images already live on ampy.se). Phone number + links are
+ * hard-set here to the live values; swap for ACF/dynamic tags if preferred.
+ */
+if ( ! function_exists( 'ampy_header_markup' ) ) {
+  add_shortcode( 'ampy_header', 'ampy_header_markup' );
+  function ampy_header_markup() {
+    ob_start(); ?>
+<div class="ampy-hdr-root">
+  <div class="dim" data-close></div>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="hdr">
+    <div class="hdr__in">
+      <a class="hdr__logo" href="https://ampy.se" aria-label="Ampy — hem">
+        <img src="https://ampy.se/wp-content/uploads/Ampy-logo.svg" alt="Ampy">
+      </a>
+
+      <nav class="nav" aria-label="Huvudmeny">
+
+        <!-- TJÄNSTER -->
+        <div class="nav__item" data-menu>
+          <button class="nav__link" aria-expanded="false" aria-controls="aph-mega-tjanster">Tjänster
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mega mega--services" id="aph-mega-tjanster">
+            <div class="mega__in">
+              <div class="mcol">
+                <a class="mcol__title" href="https://ampy.se/elinstallation/">
+                  <img src="https://ampy.se/wp-content/uploads/Shovel-icon.svg" alt="">Elinstallationer</a>
+                <a class="mitem" href="https://ampy.se/elservice/elcentral/">Byte av elcentral</a>
+                <a class="mitem" href="https://ampy.se/elservice/elbesiktning/">Elbesiktning</a>
+                <a class="mitem" href="https://ampy.se/elservice/felsokning-av-el/">Felsökning av el</a>
+                <a class="mitem" href="https://ampy.se/elservice/jordfelsbrytare/">Jordfelsbrytare</a>
+                <a class="mitem" href="https://ampy.se/elservice/lastbalansering/">Lastbalansering</a>
+                <a class="mitem" href="https://ampy.se/elservice/smarta-hem/">Smarta hem</a>
+              </div>
+              <div class="mcol">
+                <a class="mcol__title" href="https://ampy.se/elservice/belysning/">
+                  <img src="https://ampy.se/wp-content/uploads/light-bulb.svg" alt="">Belysning</a>
+                <a class="mitem" href="https://ampy.se/elservice/inomhusbelysning/">Inomhusbelysning</a>
+                <a class="mitem" href="https://ampy.se/elservice/utomhusbelysning/">Utomhusbelysning</a>
+                <a class="mitem" href="https://ampy.se/elservice/spotlights/">Installation av spotlights</a>
+                <a class="mitem" href="https://ampy.se/elservice/strombrytare/">Byte av strömbrytare</a>
+                <a class="mitem" href="https://ampy.se/elservice/glodlampa/">Byte av ljuskällor</a>
+              </div>
+              <div class="mcol">
+                <span class="mcol__title">
+                  <img src="https://ampy.se/wp-content/uploads/window.svg" alt="">Kök &amp; badrum</span>
+                <a class="mitem" href="https://ampy.se/elservice/kok/">Elinstallation i kök</a>
+                <a class="mitem" href="https://ampy.se/elservice/badrum/">Elinstallation i badrum</a>
+                <a class="mitem" href="https://ampy.se/elservice/golvvarme/">Golvvärme</a>
+                <a class="mitem" href="https://ampy.se/elservice/vitvaror/">Vitvaror</a>
+                <a class="mitem" href="https://ampy.se/elservice/ugn-spis/">Ugn &amp; spis</a>
+                <a class="mitem" href="https://ampy.se/elservice/elrenovering/">Elrenovering</a>
+              </div>
+              <div class="mcol">
+                <span class="mcol__title">
+                  <img src="https://ampy.se/wp-content/uploads/Popular.svg" alt="">Populärt</span>
+                <a class="mitem" href="https://ampy.se/eljour/">Eljour<span>Akut hjälp när det inte kan vänta</span></a>
+                <a class="mitem" href="https://ampy.se/elektriker/">Elektriker<span>Boka en auktoriserad elektriker</span></a>
+                <a class="mitem" href="https://ampy.se/laddbox/">Laddbox<span>Installation av hemmaladdning</span></a>
+                <a class="mitem" href="https://ampy.se/batterilagring/">Batterilagring<span>Installation av solcellsbatteri</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUKTER -->
+        <div class="nav__item" data-menu>
+          <button class="nav__link" aria-expanded="false" aria-controls="aph-mega-produkter">Produkter
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mega mega--products" id="aph-mega-produkter">
+            <div class="mega__in">
+              <div class="pzone">
+                <a class="ptile" href="https://ampy.se/laddboxar/">
+                  <span class="ptile__img"><img src="https://ampy.se/wp-content/uploads/ampy-laddboxar-mega.webp" alt="Laddboxar från Easee, Zaptec och Charge Amps"></span>
+                  <span class="ptile__t"><strong>Laddboxar</strong><em>Jämför och välj laddbox för villa, BRF och företag</em></span>
+                  <span class="go">→</span>
+                </a>
+                <a class="ptile" href="https://ampy.se/solcellsbatterier/">
+                  <span class="ptile__img"><img src="https://ampy.se/wp-content/uploads/ampy-solcellsbatterier-mega.webp" alt="Solcellsbatterier"></span>
+                  <span class="ptile__t"><strong>Solcellsbatterier</strong><em>Lagra din solel, använd den när elen är dyr</em></span>
+                  <span class="go">→</span>
+                </a>
+              </div>
+              <div class="gzone">
+                <span class="gzone__label">Guider &amp; verktyg</span>
+                <a class="gitem" href="#">Laddboxkalkylatorn</a>
+                <a class="gitem" href="#">Batterikalkylatorn</a>
+                <a class="gitem" href="#">Laddboxguiden</a>
+                <a class="gitem" href="#">Batteriguiden</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LÖSNINGAR -->
+        <div class="nav__item" data-menu>
+          <button class="nav__link" aria-expanded="false" aria-controls="aph-mega-losningar">Lösningar
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="mega mega--solutions" id="aph-mega-losningar">
+            <div class="mega__in">
+              <a class="lcard" href="https://ampy.se/elektriker/">
+                <img src="https://ampy.se/wp-content/uploads/Elinstallationer-gjorda-av-ampys-elektriker.webp" alt="">
+                <div class="lcard__t"><div class="lcard__row">
+                  <div><h4>Privatperson</h4><p>Elektriker för hemmet, installation och laddning</p></div>
+                  <span class="go">→</span>
+                </div></div>
+              </a>
+              <a class="lcard" href="https://ampy.se/bostadsrattsforening/">
+                <img src="https://ampy.se/wp-content/uploads/product_1.webp" alt="">
+                <div class="lcard__t"><div class="lcard__row">
+                  <div><h4>Bostadsrättsförening</h4><p>Elektriker, laddning och belysning för föreningen</p></div>
+                  <span class="go">→</span>
+                </div></div>
+              </a>
+              <a class="lcard" href="https://ampy.se/foretag/">
+                <img src="https://ampy.se/wp-content/uploads/foretag.webp" alt="">
+                <div class="lcard__t"><div class="lcard__row">
+                  <div><h4>Företag</h4><p>Elektriker för kontor, laddning och belysning</p></div>
+                  <span class="go">→</span>
+                </div></div>
+              </a>
+              <a class="lcard" href="https://ampy.se/kommuner/">
+                <img src="https://ampy.se/wp-content/uploads/kommun.webp" alt="">
+                <div class="lcard__t"><div class="lcard__row">
+                  <div><h4>Kommun</h4><p>Elpartner för kommun och offentlig verksamhet</p></div>
+                  <span class="go">→</span>
+                </div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hdr__right">
+        <a class="cta" href="https://ampy.se/offert/">Gratis rådgivning</a>
+        <button class="burger" aria-label="Öppna meny" aria-expanded="false">
+          <span></span><span></span><span></span>
+          <span class="burger__close" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================ MOBILE DRAWER (Evify pattern) ============================ -->
+  <nav class="drawer" aria-label="Mobilmeny">
+    <span class="drawer__eyebrow">Meny</span>
+    <div class="drawer__list">
+      <div class="acc" data-acc>
+        <button class="acc__head">Tjänster
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <div class="acc acc--sub" data-acc>
+            <button class="acc__head"><span class="ttl"><img src="https://ampy.se/wp-content/uploads/Shovel-icon.svg" alt="">Elinstallationer</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc__body">
+              <a class="m-item" href="https://ampy.se/elservice/elcentral/">Byte av elcentral</a>
+              <a class="m-item" href="https://ampy.se/elservice/elbesiktning/">Elbesiktning</a>
+              <a class="m-item" href="https://ampy.se/elservice/felsokning-av-el/">Felsökning av el</a>
+              <a class="m-item" href="https://ampy.se/elservice/jordfelsbrytare/">Jordfelsbrytare</a>
+              <a class="m-item" href="https://ampy.se/elservice/lastbalansering/">Lastbalansering</a>
+              <a class="m-item" href="https://ampy.se/elservice/smarta-hem/">Smarta hem</a>
+            </div>
+          </div>
+          <div class="acc acc--sub" data-acc>
+            <button class="acc__head"><span class="ttl"><img src="https://ampy.se/wp-content/uploads/light-bulb.svg" alt="">Belysning</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc__body">
+              <a class="m-item" href="https://ampy.se/elservice/inomhusbelysning/">Inomhusbelysning</a>
+              <a class="m-item" href="https://ampy.se/elservice/utomhusbelysning/">Utomhusbelysning</a>
+              <a class="m-item" href="https://ampy.se/elservice/spotlights/">Installation av spotlights</a>
+              <a class="m-item" href="https://ampy.se/elservice/strombrytare/">Byte av strömbrytare</a>
+              <a class="m-item" href="https://ampy.se/elservice/glodlampa/">Byte av ljuskällor</a>
+            </div>
+          </div>
+          <div class="acc acc--sub" data-acc>
+            <button class="acc__head"><span class="ttl"><img src="https://ampy.se/wp-content/uploads/window.svg" alt="">Kök &amp; badrum</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc__body">
+              <a class="m-item" href="https://ampy.se/elservice/kok/">Elinstallation i kök</a>
+              <a class="m-item" href="https://ampy.se/elservice/badrum/">Elinstallation i badrum</a>
+              <a class="m-item" href="https://ampy.se/elservice/golvvarme/">Golvvärme</a>
+              <a class="m-item" href="https://ampy.se/elservice/vitvaror/">Vitvaror</a>
+              <a class="m-item" href="https://ampy.se/elservice/ugn-spis/">Ugn &amp; spis</a>
+              <a class="m-item" href="https://ampy.se/elservice/elrenovering/">Elrenovering</a>
+            </div>
+          </div>
+          <div class="acc acc--sub" data-acc>
+            <button class="acc__head"><span class="ttl"><img src="https://ampy.se/wp-content/uploads/Popular.svg" alt="">Populärt</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc__body">
+              <a class="m-item" href="https://ampy.se/eljour/">Eljour</a>
+              <a class="m-item" href="https://ampy.se/elektriker/">Elektriker</a>
+              <a class="m-item" href="https://ampy.se/laddbox/">Laddbox</a>
+              <a class="m-item" href="https://ampy.se/batterilagring/">Batterilagring</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc" data-acc>
+        <button class="acc__head">Produkter
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body"><div class="m-prodwrap">
+          <a class="m-prod" href="https://ampy.se/laddboxar/">
+            <span class="m-prod__img"><img src="https://ampy.se/wp-content/uploads/ampy-laddboxar-mega.webp" alt=""></span>
+            <span class="m-prod__name">Laddboxar</span>
+            <svg class="m-prod__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+          <a class="m-prod" href="https://ampy.se/solcellsbatterier/">
+            <span class="m-prod__img"><img src="https://ampy.se/wp-content/uploads/ampy-solcellsbatterier-mega.webp" alt=""></span>
+            <span class="m-prod__name">Solcellsbatterier</span>
+            <svg class="m-prod__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+          <span class="m-sub-label">Guider &amp; verktyg</span>
+          <a class="m-sub" href="#">Laddboxkalkylatorn</a>
+          <a class="m-sub" href="#">Batterikalkylatorn</a>
+          <a class="m-sub" href="#">Laddboxguiden</a>
+          <a class="m-sub" href="#">Batteriguiden</a>
+        </div></div>
+      </div>
+
+      <div class="acc" data-acc>
+        <button class="acc__head">Lösningar
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__body">
+          <a class="m-item" href="https://ampy.se/elektriker/">Privatperson</a>
+          <a class="m-item" href="https://ampy.se/bostadsrattsforening/">Bostadsrättsförening</a>
+          <a class="m-item" href="https://ampy.se/foretag/">Företag</a>
+          <a class="m-item" href="https://ampy.se/kommuner/">Kommun</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer__foot">
+      <a class="drawer__cta" href="tel:+46102657979">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Ring en expert
+      </a>
+    </div>
+  </nav>
+</div>
+<?php return ob_get_clean();   // shortcodes RETURN, never echo
+  }
+}
