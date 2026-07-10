@@ -1,0 +1,1955 @@
+{
+  "content": [
+    {
+      "id": "3AbEb1",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "lXcMAR",
+        "bxYpTC"
+      ],
+      "settings": {
+        "_cssClasses": "ampy-hdr-root",
+        "tag": "header",
+        "_background": {
+          "color": {
+            "hex": "#f5f9ff"
+          }
+        },
+        "_border": {
+          "width": {
+            "bottom": "1"
+          },
+          "style": "solid",
+          "color": {
+            "hex": "#dbe4f0"
+          }
+        },
+        "_boxShadow": {
+          "values": {
+            "offsetX": 0,
+            "offsetY": 4,
+            "blur": 14,
+            "spread": -10,
+            "color": {
+              "rgb": "rgba(15,18,60,0.14)"
+            }
+          }
+        },
+        "_zIndex": "99999999",
+        "_padding": {
+          "top": "0",
+          "bottom": "0",
+          "left": "0",
+          "right": "0"
+        },
+        "_cssCustom": "/* AMPY HEADER — native Bricks rebuild (variant C, redesign).\n   REQUIRES the global FluentSnippets assets to MATCH the approved prototype:\n     * styles.css  (design tokens, mega/tile/card layout, .cta pulse dot, drawer)\n     * engine.js   (hover-intent, iOS scroll-lock, Evify accordion, body.aph-open)\n   Native Bricks supplies the dropdown / offcanvas / accordion SKELETON only;\n   pixel fidelity + animations come from those two files. The outer section\n   carries .ampy-hdr-root and every child mirrors a prototype class so the\n   global CSS cascades. Not render-verified (no Bricks instance). */\n%root%{z-index:99999999}"
+      },
+      "label": "Ampy Header"
+    },
+    {
+      "id": "lXcMAR",
+      "name": "container",
+      "parent": "3AbEb1",
+      "children": [
+        "Y4Qld5",
+        "MOYXqf",
+        "DZEUNG"
+      ],
+      "settings": {
+        "_cssClasses": "header-inner hdr__in",
+        "_width": "100%",
+        "_widthMax": "1280px",
+        "_display": "flex",
+        "_direction": "row",
+        "_alignItems": "center"
+      },
+      "label": "header-inner"
+    },
+    {
+      "id": "Y4Qld5",
+      "name": "logo",
+      "parent": "lXcMAR",
+      "children": [],
+      "settings": {
+        "_cssClasses": "hdr__logo",
+        "logo": {
+          "url": "https://ampy.se/wp-content/uploads/Ampy-logo.svg",
+          "external": true,
+          "alt": "Ampy"
+        },
+        "_width": "130px",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se"
+        },
+        "_cssCustom": "@media (max-width:560px){ %root% img{width:100px} }"
+      },
+      "label": "Logo"
+    },
+    {
+      "id": "MOYXqf",
+      "name": "nav-nested",
+      "parent": "lXcMAR",
+      "children": [
+        "9OvJFJ"
+      ],
+      "settings": {
+        "_cssClasses": "nav",
+        "ariaLabel": "Huvudmeny"
+      },
+      "label": "Desktop nav"
+    },
+    {
+      "id": "9OvJFJ",
+      "name": "block",
+      "parent": "MOYXqf",
+      "children": [
+        "mXsu0V",
+        "5rz79i",
+        "ozWE2J"
+      ],
+      "settings": {
+        "tag": "ul",
+        "_cssClasses": "brx-nav-nested-items"
+      },
+      "label": "nav items"
+    },
+    {
+      "id": "mXsu0V",
+      "name": "dropdown",
+      "parent": "9OvJFJ",
+      "children": [
+        "lJXrtv"
+      ],
+      "settings": {
+        "megaMenu": true,
+        "megaMenuSelector": ".header-inner",
+        "text": "Tjänster",
+        "_cssClasses": "nav__item"
+      },
+      "label": "Tjänster"
+    },
+    {
+      "id": "lJXrtv",
+      "name": "div",
+      "parent": "mXsu0V",
+      "children": [
+        "PaWZnC"
+      ],
+      "settings": {
+        "_cssClasses": "brx-dropdown-content mega mega--services"
+      },
+      "label": "brx-dropdown-content"
+    },
+    {
+      "id": "PaWZnC",
+      "name": "div",
+      "parent": "lJXrtv",
+      "children": [
+        "W9AOC2",
+        "lGQn38",
+        "Uay2I8",
+        "jbsWIx"
+      ],
+      "settings": {
+        "_cssClasses": "mega__in"
+      },
+      "label": "mega__in"
+    },
+    {
+      "id": "W9AOC2",
+      "name": "div",
+      "parent": "PaWZnC",
+      "children": [
+        "rMVRhg",
+        "k5h3hM"
+      ],
+      "settings": {
+        "_cssClasses": "mcol"
+      },
+      "label": "Elinstallationer"
+    },
+    {
+      "id": "rMVRhg",
+      "name": "div",
+      "parent": "W9AOC2",
+      "children": [
+        "3ZiOxM",
+        "14Fsng"
+      ],
+      "settings": {
+        "_cssClasses": "mcol__title",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/elinstallation/"
+        }
+      },
+      "label": "title"
+    },
+    {
+      "id": "3ZiOxM",
+      "name": "image",
+      "parent": "rMVRhg",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__title-icon",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/Shovel-icon.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "14Fsng",
+      "name": "heading",
+      "parent": "rMVRhg",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Elinstallationer"
+      },
+      "label": "Elinstallationer"
+    },
+    {
+      "id": "k5h3hM",
+      "name": "nav-menu",
+      "parent": "W9AOC2",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__menu",
+        "menu": "29"
+      },
+      "label": "menu 29"
+    },
+    {
+      "id": "lGQn38",
+      "name": "div",
+      "parent": "PaWZnC",
+      "children": [
+        "wSjUgf",
+        "mGmIFe"
+      ],
+      "settings": {
+        "_cssClasses": "mcol"
+      },
+      "label": "Belysning"
+    },
+    {
+      "id": "wSjUgf",
+      "name": "div",
+      "parent": "lGQn38",
+      "children": [
+        "Dgx7aa",
+        "eReRIm"
+      ],
+      "settings": {
+        "_cssClasses": "mcol__title",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/elservice/belysning/"
+        }
+      },
+      "label": "title"
+    },
+    {
+      "id": "Dgx7aa",
+      "name": "image",
+      "parent": "wSjUgf",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__title-icon",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/light-bulb.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "eReRIm",
+      "name": "heading",
+      "parent": "wSjUgf",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Belysning"
+      },
+      "label": "Belysning"
+    },
+    {
+      "id": "mGmIFe",
+      "name": "nav-menu",
+      "parent": "lGQn38",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__menu",
+        "menu": "30"
+      },
+      "label": "menu 30"
+    },
+    {
+      "id": "Uay2I8",
+      "name": "div",
+      "parent": "PaWZnC",
+      "children": [
+        "JKK2wV",
+        "LoEmyo"
+      ],
+      "settings": {
+        "_cssClasses": "mcol"
+      },
+      "label": "Kök & badrum"
+    },
+    {
+      "id": "JKK2wV",
+      "name": "div",
+      "parent": "Uay2I8",
+      "children": [
+        "9Kd2S9",
+        "mMwpN6"
+      ],
+      "settings": {
+        "_cssClasses": "mcol__title"
+      },
+      "label": "title"
+    },
+    {
+      "id": "9Kd2S9",
+      "name": "image",
+      "parent": "JKK2wV",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__title-icon",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/window.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "mMwpN6",
+      "name": "heading",
+      "parent": "JKK2wV",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Kök & badrum"
+      },
+      "label": "Kök & badrum"
+    },
+    {
+      "id": "LoEmyo",
+      "name": "nav-menu",
+      "parent": "Uay2I8",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__menu",
+        "menu": "31"
+      },
+      "label": "menu 31"
+    },
+    {
+      "id": "jbsWIx",
+      "name": "div",
+      "parent": "PaWZnC",
+      "children": [
+        "8wKUBj",
+        "wj8OnW"
+      ],
+      "settings": {
+        "_cssClasses": "mcol"
+      },
+      "label": "Populärt"
+    },
+    {
+      "id": "8wKUBj",
+      "name": "div",
+      "parent": "jbsWIx",
+      "children": [
+        "n2NAkG",
+        "DS3QEH"
+      ],
+      "settings": {
+        "_cssClasses": "mcol__title"
+      },
+      "label": "title"
+    },
+    {
+      "id": "n2NAkG",
+      "name": "image",
+      "parent": "8wKUBj",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__title-icon",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/Popular.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "DS3QEH",
+      "name": "heading",
+      "parent": "8wKUBj",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Populärt"
+      },
+      "label": "Populärt"
+    },
+    {
+      "id": "wj8OnW",
+      "name": "nav-menu",
+      "parent": "jbsWIx",
+      "children": [],
+      "settings": {
+        "_cssClasses": "mcol__menu",
+        "menu": "32"
+      },
+      "label": "menu 32"
+    },
+    {
+      "id": "5rz79i",
+      "name": "dropdown",
+      "parent": "9OvJFJ",
+      "children": [
+        "wbd9TN"
+      ],
+      "settings": {
+        "megaMenu": true,
+        "megaMenuSelector": ".header-inner",
+        "text": "Produkter",
+        "_cssClasses": "nav__item"
+      },
+      "label": "Produkter"
+    },
+    {
+      "id": "wbd9TN",
+      "name": "div",
+      "parent": "5rz79i",
+      "children": [
+        "UXTbIG"
+      ],
+      "settings": {
+        "_cssClasses": "brx-dropdown-content mega mega--products"
+      },
+      "label": "brx-dropdown-content"
+    },
+    {
+      "id": "UXTbIG",
+      "name": "div",
+      "parent": "wbd9TN",
+      "children": [
+        "qKddcd",
+        "dGAbrZ"
+      ],
+      "settings": {
+        "_cssClasses": "mega__in"
+      },
+      "label": "mega__in"
+    },
+    {
+      "id": "qKddcd",
+      "name": "div",
+      "parent": "UXTbIG",
+      "children": [
+        "M9cw2n",
+        "RG2jEq"
+      ],
+      "settings": {
+        "_cssClasses": "pzone"
+      },
+      "label": "pzone"
+    },
+    {
+      "id": "M9cw2n",
+      "name": "div",
+      "parent": "qKddcd",
+      "children": [
+        "eQUAD3",
+        "nQ8IEk"
+      ],
+      "settings": {
+        "_cssClasses": "ptile",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/laddboxar/"
+        }
+      },
+      "label": "Laddboxar"
+    },
+    {
+      "id": "eQUAD3",
+      "name": "div",
+      "parent": "M9cw2n",
+      "children": [
+        "UhgalL"
+      ],
+      "settings": {
+        "_cssClasses": "ptile__img"
+      },
+      "label": "img"
+    },
+    {
+      "id": "UhgalL",
+      "name": "image",
+      "parent": "eQUAD3",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/ampy-laddboxar-mega.webp",
+          "external": true,
+          "alt": "Laddboxar från Easee, Zaptec och Charge Amps"
+        }
+      },
+      "label": "Laddboxar bild"
+    },
+    {
+      "id": "nQ8IEk",
+      "name": "div",
+      "parent": "M9cw2n",
+      "children": [
+        "3jQIvE",
+        "yCcqfb"
+      ],
+      "settings": {
+        "_cssClasses": "ptile__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "3jQIvE",
+      "name": "heading",
+      "parent": "nQ8IEk",
+      "children": [],
+      "settings": {
+        "tag": "strong",
+        "text": "Laddboxar"
+      },
+      "label": "Laddboxar"
+    },
+    {
+      "id": "yCcqfb",
+      "name": "text-basic",
+      "parent": "nQ8IEk",
+      "children": [],
+      "settings": {
+        "tag": "em",
+        "text": "Jämför och välj laddbox för villa, BRF och företag"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "RG2jEq",
+      "name": "div",
+      "parent": "qKddcd",
+      "children": [
+        "6d8Prk",
+        "kRxp93"
+      ],
+      "settings": {
+        "_cssClasses": "ptile",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/solcellsbatterier/"
+        }
+      },
+      "label": "Solcellsbatterier"
+    },
+    {
+      "id": "6d8Prk",
+      "name": "div",
+      "parent": "RG2jEq",
+      "children": [
+        "4PvSKg"
+      ],
+      "settings": {
+        "_cssClasses": "ptile__img"
+      },
+      "label": "img"
+    },
+    {
+      "id": "4PvSKg",
+      "name": "image",
+      "parent": "6d8Prk",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/ampy-solcellsbatterier-mega.webp",
+          "external": true,
+          "alt": "Solcellsbatterier"
+        }
+      },
+      "label": "Solcellsbatterier bild"
+    },
+    {
+      "id": "kRxp93",
+      "name": "div",
+      "parent": "RG2jEq",
+      "children": [
+        "iYEv4n",
+        "SBzfTp"
+      ],
+      "settings": {
+        "_cssClasses": "ptile__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "iYEv4n",
+      "name": "heading",
+      "parent": "kRxp93",
+      "children": [],
+      "settings": {
+        "tag": "strong",
+        "text": "Solcellsbatterier"
+      },
+      "label": "Solcellsbatterier"
+    },
+    {
+      "id": "SBzfTp",
+      "name": "text-basic",
+      "parent": "kRxp93",
+      "children": [],
+      "settings": {
+        "tag": "em",
+        "text": "Lagra din solel, använd den när elen är dyr"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "dGAbrZ",
+      "name": "div",
+      "parent": "UXTbIG",
+      "children": [
+        "AEaaOi",
+        "2P8PU6",
+        "47CBLW",
+        "jXZlyT",
+        "EWtaUT"
+      ],
+      "settings": {
+        "_cssClasses": "gzone"
+      },
+      "label": "gzone"
+    },
+    {
+      "id": "AEaaOi",
+      "name": "text-basic",
+      "parent": "dGAbrZ",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "_cssClasses": "gzone__label",
+        "text": "Guider & verktyg"
+      },
+      "label": "label"
+    },
+    {
+      "id": "2P8PU6",
+      "name": "text-basic",
+      "parent": "dGAbrZ",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "gitem",
+        "text": "Laddboxkalkylatorn",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Laddboxkalkylatorn"
+    },
+    {
+      "id": "47CBLW",
+      "name": "text-basic",
+      "parent": "dGAbrZ",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "gitem",
+        "text": "Batterikalkylatorn",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Batterikalkylatorn"
+    },
+    {
+      "id": "jXZlyT",
+      "name": "text-basic",
+      "parent": "dGAbrZ",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "gitem",
+        "text": "Laddboxguiden",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Laddboxguiden"
+    },
+    {
+      "id": "EWtaUT",
+      "name": "text-basic",
+      "parent": "dGAbrZ",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "gitem",
+        "text": "Batteriguiden",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Batteriguiden"
+    },
+    {
+      "id": "ozWE2J",
+      "name": "dropdown",
+      "parent": "9OvJFJ",
+      "children": [
+        "iyiBMU"
+      ],
+      "settings": {
+        "megaMenu": true,
+        "megaMenuSelector": ".header-inner",
+        "text": "Lösningar",
+        "_cssClasses": "nav__item"
+      },
+      "label": "Lösningar"
+    },
+    {
+      "id": "iyiBMU",
+      "name": "div",
+      "parent": "ozWE2J",
+      "children": [
+        "deHeo6"
+      ],
+      "settings": {
+        "_cssClasses": "brx-dropdown-content mega mega--solutions"
+      },
+      "label": "brx-dropdown-content"
+    },
+    {
+      "id": "deHeo6",
+      "name": "div",
+      "parent": "iyiBMU",
+      "children": [
+        "skWQgk",
+        "hysr8A",
+        "4grRE9",
+        "UVspO4"
+      ],
+      "settings": {
+        "_cssClasses": "mega__in"
+      },
+      "label": "mega__in"
+    },
+    {
+      "id": "skWQgk",
+      "name": "div",
+      "parent": "deHeo6",
+      "children": [
+        "QO0vAW",
+        "PTfKQc"
+      ],
+      "settings": {
+        "_cssClasses": "lcard",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/elektriker/"
+        }
+      },
+      "label": "Privatperson"
+    },
+    {
+      "id": "QO0vAW",
+      "name": "image",
+      "parent": "skWQgk",
+      "children": [],
+      "settings": {
+        "_cssClasses": "lcard__img",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/Elinstallationer-gjorda-av-ampys-elektriker.webp",
+          "external": true
+        }
+      },
+      "label": "bg"
+    },
+    {
+      "id": "PTfKQc",
+      "name": "div",
+      "parent": "skWQgk",
+      "children": [
+        "38Ib96",
+        "Z0eJWH"
+      ],
+      "settings": {
+        "_cssClasses": "lcard__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "38Ib96",
+      "name": "heading",
+      "parent": "PTfKQc",
+      "children": [],
+      "settings": {
+        "tag": "h4",
+        "text": "Privatperson"
+      },
+      "label": "Privatperson"
+    },
+    {
+      "id": "Z0eJWH",
+      "name": "text-basic",
+      "parent": "PTfKQc",
+      "children": [],
+      "settings": {
+        "tag": "p",
+        "text": "Elektriker för hemmet, installation och laddning"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "hysr8A",
+      "name": "div",
+      "parent": "deHeo6",
+      "children": [
+        "xZAcNY",
+        "m4eF1x"
+      ],
+      "settings": {
+        "_cssClasses": "lcard",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/bostadsrattsforening/"
+        }
+      },
+      "label": "Bostadsrättsförening"
+    },
+    {
+      "id": "xZAcNY",
+      "name": "image",
+      "parent": "hysr8A",
+      "children": [],
+      "settings": {
+        "_cssClasses": "lcard__img",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/product_1.webp",
+          "external": true
+        }
+      },
+      "label": "bg"
+    },
+    {
+      "id": "m4eF1x",
+      "name": "div",
+      "parent": "hysr8A",
+      "children": [
+        "VjRsqZ",
+        "zL6hjM"
+      ],
+      "settings": {
+        "_cssClasses": "lcard__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "VjRsqZ",
+      "name": "heading",
+      "parent": "m4eF1x",
+      "children": [],
+      "settings": {
+        "tag": "h4",
+        "text": "Bostadsrättsförening"
+      },
+      "label": "Bostadsrättsförening"
+    },
+    {
+      "id": "zL6hjM",
+      "name": "text-basic",
+      "parent": "m4eF1x",
+      "children": [],
+      "settings": {
+        "tag": "p",
+        "text": "Elektriker, laddning och belysning för föreningen"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "4grRE9",
+      "name": "div",
+      "parent": "deHeo6",
+      "children": [
+        "n02i8S",
+        "ushKR4"
+      ],
+      "settings": {
+        "_cssClasses": "lcard",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/foretag/"
+        }
+      },
+      "label": "Företag"
+    },
+    {
+      "id": "n02i8S",
+      "name": "image",
+      "parent": "4grRE9",
+      "children": [],
+      "settings": {
+        "_cssClasses": "lcard__img",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/foretag.webp",
+          "external": true
+        }
+      },
+      "label": "bg"
+    },
+    {
+      "id": "ushKR4",
+      "name": "div",
+      "parent": "4grRE9",
+      "children": [
+        "NWZJIc",
+        "8SHXQr"
+      ],
+      "settings": {
+        "_cssClasses": "lcard__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "NWZJIc",
+      "name": "heading",
+      "parent": "ushKR4",
+      "children": [],
+      "settings": {
+        "tag": "h4",
+        "text": "Företag"
+      },
+      "label": "Företag"
+    },
+    {
+      "id": "8SHXQr",
+      "name": "text-basic",
+      "parent": "ushKR4",
+      "children": [],
+      "settings": {
+        "tag": "p",
+        "text": "Elektriker för kontor, laddning och belysning"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "UVspO4",
+      "name": "div",
+      "parent": "deHeo6",
+      "children": [
+        "1E6VKB",
+        "y1sJD3"
+      ],
+      "settings": {
+        "_cssClasses": "lcard",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/kommuner/"
+        }
+      },
+      "label": "Kommun"
+    },
+    {
+      "id": "1E6VKB",
+      "name": "image",
+      "parent": "UVspO4",
+      "children": [],
+      "settings": {
+        "_cssClasses": "lcard__img",
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/kommun.webp",
+          "external": true
+        }
+      },
+      "label": "bg"
+    },
+    {
+      "id": "y1sJD3",
+      "name": "div",
+      "parent": "UVspO4",
+      "children": [
+        "PUQ3aq",
+        "jxvZNQ"
+      ],
+      "settings": {
+        "_cssClasses": "lcard__t"
+      },
+      "label": "text"
+    },
+    {
+      "id": "PUQ3aq",
+      "name": "heading",
+      "parent": "y1sJD3",
+      "children": [],
+      "settings": {
+        "tag": "h4",
+        "text": "Kommun"
+      },
+      "label": "Kommun"
+    },
+    {
+      "id": "jxvZNQ",
+      "name": "text-basic",
+      "parent": "y1sJD3",
+      "children": [],
+      "settings": {
+        "tag": "p",
+        "text": "Elpartner för kommun och offentlig verksamhet"
+      },
+      "label": "desc"
+    },
+    {
+      "id": "DZEUNG",
+      "name": "div",
+      "parent": "lXcMAR",
+      "children": [
+        "4YzJX3",
+        "ajRsXy"
+      ],
+      "settings": {
+        "_cssClasses": "hdr__right"
+      },
+      "label": "hdr__right"
+    },
+    {
+      "id": "4YzJX3",
+      "name": "button",
+      "parent": "DZEUNG",
+      "children": [],
+      "settings": {
+        "_cssClasses": "cta",
+        "text": "Gratis rådgivning",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/offert/"
+        },
+        "_background": {
+          "color": {
+            "hex": "#00a991"
+          }
+        },
+        "_typography": {
+          "color": {
+            "hex": "#ffffff"
+          }
+        }
+      },
+      "label": "CTA"
+    },
+    {
+      "id": "ajRsXy",
+      "name": "toggle",
+      "parent": "DZEUNG",
+      "children": [],
+      "settings": {
+        "_cssClasses": "burger",
+        "ariaLabel": "Öppna meny"
+      },
+      "label": "Hamburger"
+    },
+    {
+      "id": "bxYpTC",
+      "name": "offcanvas",
+      "parent": "3AbEb1",
+      "children": [
+        "PHRjdl"
+      ],
+      "settings": {
+        "_cssClasses": "drawer",
+        "direction": "right",
+        "ariaLabel": "Mobilmeny"
+      },
+      "label": "Mobile drawer"
+    },
+    {
+      "id": "PHRjdl",
+      "name": "block",
+      "parent": "bxYpTC",
+      "children": [
+        "yobeSX",
+        "eahpLq",
+        "Y8fQuf"
+      ],
+      "settings": {
+        "_cssClasses": "drawer__inner"
+      },
+      "label": "drawer inner"
+    },
+    {
+      "id": "yobeSX",
+      "name": "text-basic",
+      "parent": "PHRjdl",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "_cssClasses": "drawer__eyebrow",
+        "text": "Meny"
+      },
+      "label": "eyebrow"
+    },
+    {
+      "id": "eahpLq",
+      "name": "div",
+      "parent": "PHRjdl",
+      "children": [
+        "v5oLM4"
+      ],
+      "settings": {
+        "_cssClasses": "drawer__list"
+      },
+      "label": "list"
+    },
+    {
+      "id": "v5oLM4",
+      "name": "accordion-nested",
+      "parent": "eahpLq",
+      "children": [
+        "eWkRNR",
+        "TERKwY",
+        "O3UMqS"
+      ],
+      "settings": {
+        "_cssClasses": "acc-root"
+      },
+      "label": "Mobile accordion"
+    },
+    {
+      "id": "eWkRNR",
+      "name": "block",
+      "parent": "v5oLM4",
+      "children": [
+        "pvxlNB",
+        "pyjqpl"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--top"
+      },
+      "label": "Tjänster"
+    },
+    {
+      "id": "pvxlNB",
+      "name": "block",
+      "parent": "eWkRNR",
+      "children": [
+        "RtKp9o"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "RtKp9o",
+      "name": "heading",
+      "parent": "pvxlNB",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Tjänster"
+      },
+      "label": "Tjänster"
+    },
+    {
+      "id": "pyjqpl",
+      "name": "block",
+      "parent": "eWkRNR",
+      "children": [
+        "vkiMdH"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "vkiMdH",
+      "name": "accordion-nested",
+      "parent": "pyjqpl",
+      "children": [
+        "cpMGeW",
+        "uKmm00",
+        "fqswhg",
+        "EbB38C"
+      ],
+      "settings": {
+        "_cssClasses": "acc-sub-root"
+      },
+      "label": "Tjänster grupper"
+    },
+    {
+      "id": "cpMGeW",
+      "name": "block",
+      "parent": "vkiMdH",
+      "children": [
+        "rVnVTR",
+        "hYd5i0"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--sub"
+      },
+      "label": "Elinstallationer"
+    },
+    {
+      "id": "rVnVTR",
+      "name": "block",
+      "parent": "cpMGeW",
+      "children": [
+        "v02Yer"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "v02Yer",
+      "name": "div",
+      "parent": "rVnVTR",
+      "children": [
+        "nCTrBc",
+        "zQzUak"
+      ],
+      "settings": {
+        "_cssClasses": "ttl"
+      },
+      "label": "ttl"
+    },
+    {
+      "id": "nCTrBc",
+      "name": "image",
+      "parent": "v02Yer",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/Shovel-icon.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "zQzUak",
+      "name": "heading",
+      "parent": "v02Yer",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Elinstallationer"
+      },
+      "label": "Elinstallationer"
+    },
+    {
+      "id": "hYd5i0",
+      "name": "block",
+      "parent": "cpMGeW",
+      "children": [
+        "plm3lm"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "plm3lm",
+      "name": "nav-menu",
+      "parent": "hYd5i0",
+      "children": [],
+      "settings": {
+        "menu": "29",
+        "_cssClasses": "acc__menu"
+      },
+      "label": "menu 29"
+    },
+    {
+      "id": "uKmm00",
+      "name": "block",
+      "parent": "vkiMdH",
+      "children": [
+        "CojYW4",
+        "jXCTQV"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--sub"
+      },
+      "label": "Belysning"
+    },
+    {
+      "id": "CojYW4",
+      "name": "block",
+      "parent": "uKmm00",
+      "children": [
+        "lY0dJS"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "lY0dJS",
+      "name": "div",
+      "parent": "CojYW4",
+      "children": [
+        "M9b9Lc",
+        "3pO5gr"
+      ],
+      "settings": {
+        "_cssClasses": "ttl"
+      },
+      "label": "ttl"
+    },
+    {
+      "id": "M9b9Lc",
+      "name": "image",
+      "parent": "lY0dJS",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/light-bulb.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "3pO5gr",
+      "name": "heading",
+      "parent": "lY0dJS",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Belysning"
+      },
+      "label": "Belysning"
+    },
+    {
+      "id": "jXCTQV",
+      "name": "block",
+      "parent": "uKmm00",
+      "children": [
+        "dqHpuE"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "dqHpuE",
+      "name": "nav-menu",
+      "parent": "jXCTQV",
+      "children": [],
+      "settings": {
+        "menu": "30",
+        "_cssClasses": "acc__menu"
+      },
+      "label": "menu 30"
+    },
+    {
+      "id": "fqswhg",
+      "name": "block",
+      "parent": "vkiMdH",
+      "children": [
+        "zSpPWy",
+        "cJS92f"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--sub"
+      },
+      "label": "Kök & badrum"
+    },
+    {
+      "id": "zSpPWy",
+      "name": "block",
+      "parent": "fqswhg",
+      "children": [
+        "5WQKza"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "5WQKza",
+      "name": "div",
+      "parent": "zSpPWy",
+      "children": [
+        "pFrDtL",
+        "TmtrHn"
+      ],
+      "settings": {
+        "_cssClasses": "ttl"
+      },
+      "label": "ttl"
+    },
+    {
+      "id": "pFrDtL",
+      "name": "image",
+      "parent": "5WQKza",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/window.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "TmtrHn",
+      "name": "heading",
+      "parent": "5WQKza",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Kök & badrum"
+      },
+      "label": "Kök & badrum"
+    },
+    {
+      "id": "cJS92f",
+      "name": "block",
+      "parent": "fqswhg",
+      "children": [
+        "m2XYeq"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "m2XYeq",
+      "name": "nav-menu",
+      "parent": "cJS92f",
+      "children": [],
+      "settings": {
+        "menu": "31",
+        "_cssClasses": "acc__menu"
+      },
+      "label": "menu 31"
+    },
+    {
+      "id": "EbB38C",
+      "name": "block",
+      "parent": "vkiMdH",
+      "children": [
+        "mJncYV",
+        "7iulaO"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--sub"
+      },
+      "label": "Populärt"
+    },
+    {
+      "id": "mJncYV",
+      "name": "block",
+      "parent": "EbB38C",
+      "children": [
+        "1ZTiyr"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "1ZTiyr",
+      "name": "div",
+      "parent": "mJncYV",
+      "children": [
+        "BQdoOw",
+        "pcYWDG"
+      ],
+      "settings": {
+        "_cssClasses": "ttl"
+      },
+      "label": "ttl"
+    },
+    {
+      "id": "BQdoOw",
+      "name": "image",
+      "parent": "1ZTiyr",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/Popular.svg",
+          "external": true
+        }
+      },
+      "label": "icon"
+    },
+    {
+      "id": "pcYWDG",
+      "name": "heading",
+      "parent": "1ZTiyr",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Populärt"
+      },
+      "label": "Populärt"
+    },
+    {
+      "id": "7iulaO",
+      "name": "block",
+      "parent": "EbB38C",
+      "children": [
+        "24Rt8Z"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "24Rt8Z",
+      "name": "nav-menu",
+      "parent": "7iulaO",
+      "children": [],
+      "settings": {
+        "menu": "32",
+        "_cssClasses": "acc__menu"
+      },
+      "label": "menu 32"
+    },
+    {
+      "id": "TERKwY",
+      "name": "block",
+      "parent": "v5oLM4",
+      "children": [
+        "5KaibB",
+        "4QzC1v"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--top"
+      },
+      "label": "Produkter"
+    },
+    {
+      "id": "5KaibB",
+      "name": "block",
+      "parent": "TERKwY",
+      "children": [
+        "0tflCH"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "0tflCH",
+      "name": "heading",
+      "parent": "5KaibB",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Produkter"
+      },
+      "label": "Produkter"
+    },
+    {
+      "id": "4QzC1v",
+      "name": "block",
+      "parent": "TERKwY",
+      "children": [
+        "Zt2uO8"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "Zt2uO8",
+      "name": "div",
+      "parent": "4QzC1v",
+      "children": [
+        "2is3WX",
+        "jwub3E",
+        "YwaJJR",
+        "G3Iys6",
+        "wtZGeI",
+        "eYdk1Z",
+        "PeLqZL"
+      ],
+      "settings": {
+        "_cssClasses": "m-prodwrap"
+      },
+      "label": "prodwrap"
+    },
+    {
+      "id": "2is3WX",
+      "name": "div",
+      "parent": "Zt2uO8",
+      "children": [
+        "i0JKuR",
+        "ZX1bEa"
+      ],
+      "settings": {
+        "_cssClasses": "m-prod",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/laddboxar/"
+        }
+      },
+      "label": "Laddboxar"
+    },
+    {
+      "id": "i0JKuR",
+      "name": "div",
+      "parent": "2is3WX",
+      "children": [
+        "QP17EJ"
+      ],
+      "settings": {
+        "_cssClasses": "m-prod__img"
+      },
+      "label": "img"
+    },
+    {
+      "id": "QP17EJ",
+      "name": "image",
+      "parent": "i0JKuR",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/ampy-laddboxar-mega.webp",
+          "external": true
+        }
+      },
+      "label": "Laddboxar bild"
+    },
+    {
+      "id": "ZX1bEa",
+      "name": "text-basic",
+      "parent": "2is3WX",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "_cssClasses": "m-prod__name",
+        "text": "Laddboxar"
+      },
+      "label": "Laddboxar"
+    },
+    {
+      "id": "jwub3E",
+      "name": "div",
+      "parent": "Zt2uO8",
+      "children": [
+        "tY3Ac1",
+        "xXAuwr"
+      ],
+      "settings": {
+        "_cssClasses": "m-prod",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/solcellsbatterier/"
+        }
+      },
+      "label": "Solcellsbatterier"
+    },
+    {
+      "id": "tY3Ac1",
+      "name": "div",
+      "parent": "jwub3E",
+      "children": [
+        "TPfi3r"
+      ],
+      "settings": {
+        "_cssClasses": "m-prod__img"
+      },
+      "label": "img"
+    },
+    {
+      "id": "TPfi3r",
+      "name": "image",
+      "parent": "tY3Ac1",
+      "children": [],
+      "settings": {
+        "image": {
+          "url": "https://ampy.se/wp-content/uploads/ampy-solcellsbatterier-mega.webp",
+          "external": true
+        }
+      },
+      "label": "Solcellsbatterier bild"
+    },
+    {
+      "id": "xXAuwr",
+      "name": "text-basic",
+      "parent": "jwub3E",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "_cssClasses": "m-prod__name",
+        "text": "Solcellsbatterier"
+      },
+      "label": "Solcellsbatterier"
+    },
+    {
+      "id": "YwaJJR",
+      "name": "text-basic",
+      "parent": "Zt2uO8",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "_cssClasses": "m-sub-label",
+        "text": "Guider & verktyg"
+      },
+      "label": "label"
+    },
+    {
+      "id": "G3Iys6",
+      "name": "text-basic",
+      "parent": "Zt2uO8",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-sub",
+        "text": "Laddboxkalkylatorn",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Laddboxkalkylatorn"
+    },
+    {
+      "id": "wtZGeI",
+      "name": "text-basic",
+      "parent": "Zt2uO8",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-sub",
+        "text": "Batterikalkylatorn",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Batterikalkylatorn"
+    },
+    {
+      "id": "eYdk1Z",
+      "name": "text-basic",
+      "parent": "Zt2uO8",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-sub",
+        "text": "Laddboxguiden",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Laddboxguiden"
+    },
+    {
+      "id": "PeLqZL",
+      "name": "text-basic",
+      "parent": "Zt2uO8",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-sub",
+        "text": "Batteriguiden",
+        "link": {
+          "type": "external",
+          "url": "#"
+        }
+      },
+      "label": "Batteriguiden"
+    },
+    {
+      "id": "O3UMqS",
+      "name": "block",
+      "parent": "v5oLM4",
+      "children": [
+        "xbAR2g",
+        "I1qNHB"
+      ],
+      "settings": {
+        "_cssClasses": "acc acc--top"
+      },
+      "label": "Lösningar"
+    },
+    {
+      "id": "xbAR2g",
+      "name": "block",
+      "parent": "O3UMqS",
+      "children": [
+        "cQNlzV"
+      ],
+      "settings": {
+        "_cssClasses": "acc__head",
+        "tag": "button"
+      },
+      "label": "title"
+    },
+    {
+      "id": "cQNlzV",
+      "name": "heading",
+      "parent": "xbAR2g",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Lösningar"
+      },
+      "label": "Lösningar"
+    },
+    {
+      "id": "I1qNHB",
+      "name": "block",
+      "parent": "O3UMqS",
+      "children": [
+        "PCieS4",
+        "My1vMw",
+        "z3VfxS",
+        "h5GsyQ"
+      ],
+      "settings": {
+        "_cssClasses": "acc__body"
+      },
+      "label": "content"
+    },
+    {
+      "id": "PCieS4",
+      "name": "text-basic",
+      "parent": "I1qNHB",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-item",
+        "text": "Privatperson",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/elektriker/"
+        }
+      },
+      "label": "Privatperson"
+    },
+    {
+      "id": "My1vMw",
+      "name": "text-basic",
+      "parent": "I1qNHB",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-item",
+        "text": "Bostadsrättsförening",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/bostadsrattsforening/"
+        }
+      },
+      "label": "Bostadsrättsförening"
+    },
+    {
+      "id": "z3VfxS",
+      "name": "text-basic",
+      "parent": "I1qNHB",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-item",
+        "text": "Företag",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/foretag/"
+        }
+      },
+      "label": "Företag"
+    },
+    {
+      "id": "h5GsyQ",
+      "name": "text-basic",
+      "parent": "I1qNHB",
+      "children": [],
+      "settings": {
+        "tag": "a",
+        "_cssClasses": "m-item",
+        "text": "Kommun",
+        "link": {
+          "type": "external",
+          "url": "https://ampy.se/kommuner/"
+        }
+      },
+      "label": "Kommun"
+    },
+    {
+      "id": "Y8fQuf",
+      "name": "div",
+      "parent": "PHRjdl",
+      "children": [
+        "YvgMHA"
+      ],
+      "settings": {
+        "_cssClasses": "drawer__foot"
+      },
+      "label": "foot"
+    },
+    {
+      "id": "YvgMHA",
+      "name": "button",
+      "parent": "Y8fQuf",
+      "children": [],
+      "settings": {
+        "_cssClasses": "drawer__cta",
+        "text": "Ring en expert",
+        "link": {
+          "type": "external",
+          "url": "tel:+46102657979"
+        },
+        "_background": {
+          "color": {
+            "hex": "#00a991"
+          }
+        },
+        "_typography": {
+          "color": {
+            "hex": "#ffffff"
+          }
+        }
+      },
+      "label": "Ring en expert"
+    }
+  ],
+  "source": "bricksCopiedElements",
+  "sourceUrl": "https://ampy.se",
+  "version": "2.3.9",
+  "globalClasses": []
+}
