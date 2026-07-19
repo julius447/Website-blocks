@@ -1,0 +1,201 @@
+/* ============================================================================
+   Ampy — Hero 1 "Elinstallationer i hemmet, gjort ordentligt." (startsidans section 1)
+   FluentSnippets: lägg som CSS-snippet (eller i Bricks Code-elementets CSS-pane
+   — hero-1-bricks.json bär redan exakt denna CSS i cssCode).
+
+   PRODUKTIONSHÄRDAD — värdena är 1:1 från den ägargodkända prototypen
+   (julius447.github.io/Hero-1, commit a20119f). Ändra INTE värden ("approved
+   rendering is canon") — bara konfig-knopparna längst upp.
+
+   - Allt scopat under .ampy-hero1 → noll läckage in i temat.
+   - Enheter är px (WordPress kör INTE prototypens 62.5%-rem-bas).
+   - TYPOGRAFI ÄR MEDVETET PINNAD TILL OUTFIT (till skillnad från mini-menyns
+     block som ärver): den godkända renderingen är Outfit 700 i rubriken.
+     Sajten self-hostar redan Outfit — ingen extra @font-face här.
+   - --ampy-header-h MÅSTE matcha sajtheaderns verkliga höjd (76px desktop /
+     66px mobil i header-prototypen). Fel värde = fel hero-höjd.
+   - Bilden ligger som <img> i markupen (inte background) för fetchpriority +
+     riktig LCP. Ladda upp assets/hero-1-bg.webp till /wp-content/uploads/.
+   - Ingen JS behövs — blocket är helt statiskt/CSS-buret.
+   ============================================================================ */
+
+.ampy-hero1{
+  /* ---- konfig-knoppar ---- */
+  --ampy-header-h:76px;          /* = sajtheaderns höjd desktop */
+  --ampy-header-h-m:66px;        /* = sajtheaderns höjd <=992px */
+  /* ---- tokens (Ampy-produktion) ---- */
+  --ap-navy:#090b32; --ap-teal:#00a991; --ap-mint:#55ff9a; --ap-steel:#5eb1bf;
+  --ap-offwhite:#f5f9ff;
+
+  display:block;
+  font-family:'Outfit',ui-sans-serif,system-ui,sans-serif;
+  background:var(--ap-offwhite);
+  padding:clamp(12px,1.6vw,20px) clamp(14px,2vw,26px) clamp(20px,2.6vw,30px);
+}
+.ampy-hero1 *,.ampy-hero1 *::before,.ampy-hero1 *::after{box-sizing:border-box;margin:0;padding:0;}
+.ampy-hero1 a{text-decoration:none;}
+.ampy-hero1 img,.ampy-hero1 svg{display:block;max-width:100%;}
+
+/* ---- den inramade foto-heron (Evify-strukturen: vit "safety line" runt) ---- */
+.ampy-hero1__frame{
+  position:relative;
+  max-width:1700px;
+  margin-inline:auto;
+  height:calc(100vh - var(--ampy-header-h) - 48px);   /* fallback */
+  height:calc(100svh - var(--ampy-header-h) - 48px);
+  min-height:620px;
+  max-height:950px;
+  border-radius:22px;
+  overflow:hidden;
+}
+.ampy-hero1__frame > img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:62% 60%;
+}
+.ampy-hero1__veil{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(98deg,rgba(9,11,50,.68) 0%,rgba(9,11,50,.46) 42%,rgba(9,11,50,.12) 66%,rgba(9,11,50,.02) 100%),
+    linear-gradient(0deg,rgba(9,11,50,.38) 0%,rgba(9,11,50,0) 26%);
+}
+
+/* ---- textstacken (vit, vänster, vertikalt centrerad) ---- */
+.ampy-hero1__content{
+  position:relative;z-index:1;height:100%;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 clamp(24px,5vw,84px);
+  max-width:880px;   /* rymmer "Elinstallationer i hemmet," på rad 1 (2-radig H1) */
+}
+.ampy-hero1__title{
+  font-family:inherit;
+  font-size:clamp(36px,4.6vw,60px);
+  line-height:1.07;font-weight:700;letter-spacing:-.018em;
+  color:#ffffff;text-wrap:balance;
+}
+/* H1 bryter efter "hemmet," på desktop (≥993); på mobil göms brytet → naturlig wrap */
+.ampy-hero1__title br{display:none;}
+@media (min-width:993px){ .ampy-hero1__title br{display:inline;} }
+.ampy-hero1__lead{
+  font-size:clamp(17px,1.55vw,22px);
+  line-height:1.58;font-weight:400;
+  color:rgba(255,255,255,.92);
+  margin-top:18px;
+  text-shadow:0 1px 12px rgba(9,11,50,.35);
+}
+/* neutralisera auto-länkade ord som tema/plugins kan injicera i leaden */
+.ampy-hero1 .ampy-hero1__lead *{color:inherit;text-decoration:none;}
+
+/* ---- den ENDA CTA:n — kanonisk "Kostnadsfri rådgivning" från repo julius447/CTA-website
+   (radgivning-cta-mönstret: 120° mint→stål-gradient, mjuk navy-text, inset-highlight
+   + grön glow, pil skalar 1.18 vid hover). Heron ärver library-CTA:n; länk → /kontakt/. ---- */
+.ampy-hero1__cta{
+  display:inline-flex;align-items:center;align-self:flex-start;
+  gap:16px;margin-top:32px;min-height:58px;
+  padding:11px 26px;border-radius:16px;
+  background:linear-gradient(120deg,#55ff9a 0%,#5eb1bf 100%);
+  color:hsl(237 35% 24%);
+  font-family:inherit;font-size:16px;font-weight:500;line-height:1;letter-spacing:.005em;white-space:nowrap;
+  text-decoration:none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 2px 4px rgba(9,11,50,.10),
+    0 14px 32px -8px rgba(9,11,50,.40);
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.ampy-hero1__cta:hover{
+  transform:translateY(-1.5px);filter:saturate(1.06) brightness(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 3px 6px rgba(9,11,50,.12),
+    0 18px 38px -8px rgba(9,11,50,.46);
+}
+.ampy-hero1__cta:active{transform:translateY(0);}
+.ampy-hero1__cta .pil{flex:0 0 auto;transition:transform .16s ease;}
+.ampy-hero1__cta:hover .pil{transform:scale(1.18);}
+.ampy-hero1__cta:focus-visible{outline:3px solid var(--ap-teal);outline-offset:3px;}
+
+/* ---- trust-raden i bildens fot (Evify-mönstret) ----
+   OBS finess-uppmätt: G-ikon, "5,0 på Google", stjärnor, "|" och volymen delar
+   exakt baslinje. "5,0 på Google" ligger i EN span (vanligt mellanslag) —
+   splittra den INTE i flex-barn, det var det som skapade hålet. */
+.ampy-hero1__proof{
+  position:absolute;z-index:1;
+  right:clamp(24px,3vw,44px);bottom:clamp(20px,3vh,32px);
+  display:flex;align-items:center;gap:14px;
+  font-size:14.5px;font-weight:400;line-height:1;
+  color:#ffffff;text-shadow:0 1px 8px rgba(9,11,50,.45);
+}
+.ampy-hero1__proof .g-row{display:inline-flex;align-items:center;gap:9px;color:inherit;}
+.ampy-hero1__proof .g-icon{flex:0 0 auto;display:block;}
+.ampy-hero1__proof .g-label{white-space:nowrap;}
+.ampy-hero1__proof .g-label strong{font-weight:700;}
+.ampy-hero1__proof .g-row:hover .g-label{text-decoration:underline;}
+.ampy-hero1__proof .stars{display:inline-flex;gap:2.5px;}
+.ampy-hero1__proof .stars svg{width:13.5px;height:13.5px;fill:#ffffff;display:block;}
+.ampy-hero1__proof .sep{width:1px;height:15px;background:rgba(255,255,255,.45);}
+.ampy-hero1__proof .vol{white-space:nowrap;}
+.ampy-hero1__proof .vol strong{font-weight:700;}
+
+/* ============================================================
+   RESPONSIVT — tre lägen (verifierade 1440/1280/1024/853/768/650/540/414/390/375)
+   ============================================================ */
+
+/* ---- surfplatta 993–1200: tempererad skala + starkare veil-mitt ---- */
+@media (min-width:993px) and (max-width:1200px){
+  .ampy-hero1__content{max-width:720px;}
+  .ampy-hero1__title{font-size:clamp(38px,4.4vw,46px);}
+  .ampy-hero1__veil{
+    background:
+      linear-gradient(98deg,rgba(9,11,50,.68) 0%,rgba(9,11,50,.52) 42%,rgba(9,11,50,.12) 66%,rgba(9,11,50,.02) 100%),
+      linear-gradient(0deg,rgba(9,11,50,.38) 0%,rgba(9,11,50,0) 26%);
+  }
+}
+
+/* ---- gemensam ram <=992 ---- */
+@media (max-width:992px){
+  .ampy-hero1{padding:10px 10px 16px;}
+  .ampy-hero1__frame{
+    height:calc(100vh - var(--ampy-header-h-m) - 26px);   /* fallback */
+    height:calc(100svh - var(--ampy-header-h-m) - 26px);
+    min-height:520px;border-radius:18px;
+  }
+  .ampy-hero1__cta{align-self:flex-start;gap:14px;min-height:54px;padding:10px 24px;font-size:15.5px;}
+}
+
+/* ---- mellanband 561–992 (stor mobil landskap / liten surfplatta):
+        centrerad tempererad desktop-komposition ---- */
+@media (min-width:561px) and (max-width:992px){
+  .ampy-hero1__content{justify-content:center;padding:0 clamp(30px,6vw,60px);max-width:640px;}
+  .ampy-hero1__title{font-size:clamp(38px,6.2vw,50px);}
+  .ampy-hero1__lead{font-size:clamp(16px,2.3vw,19px);}
+  .ampy-hero1__proof{right:24px;bottom:20px;}
+}
+
+/* ---- äkta mobil <=560 (viktigaste spannet 360–400):
+        textblocket VERTIKALT CENTRERAT med lätt optisk bias (7vh) ---- */
+@media (max-width:560px){
+  .ampy-hero1__frame > img{object-position:66% 62%;}
+  .ampy-hero1__veil{
+    background:
+      linear-gradient(180deg,rgba(9,11,50,.30) 0%,rgba(9,11,50,.24) 30%,rgba(9,11,50,.28) 62%,rgba(9,11,50,.64) 100%),
+      linear-gradient(98deg,rgba(9,11,50,.28) 0%,rgba(9,11,50,.05) 60%);
+  }
+  .ampy-hero1__content{justify-content:center;padding:0 24px 7vh;max-width:none;height:100%;}
+  .ampy-hero1__title{font-size:36px;}
+  .ampy-hero1__lead{font-size:15.5px;line-height:1.55;margin-top:14px;}  /* = 3 rader @360–414 */
+  .ampy-hero1__cta{gap:12px;min-height:52px;padding:9px 22px;font-size:15px;margin-top:26px;}
+  .ampy-hero1__proof{
+    right:auto;left:24px;bottom:20px;
+    flex-direction:column;align-items:flex-start;gap:9px;font-size:13.5px;
+  }
+  .ampy-hero1__proof .sep{width:26px;height:1px;background:rgba(255,255,255,.38);}
+  .ampy-hero1__proof .vol{opacity:.92;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ampy-hero1 *,.ampy-hero1 *::before,.ampy-hero1 *::after{animation:none !important;transition:none !important;}
+}
+@media (forced-colors:active){
+  .ampy-hero1__cta:focus-visible{outline:2px solid;outline-offset:2px;}
+}
